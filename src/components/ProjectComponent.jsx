@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import supabase from '../supabaseClient';
-import styles from '../components/ProjectComponent.module.css';
+import { useEffect, useState } from "react";
+import supabase from "../supabaseClient";
+import styles from "../components/ProjectComponent.module.css";
 
 export default function ProjectComponent() {
   const [projects, setProjects] = useState([]);
