@@ -10,6 +10,8 @@ export default function ProjectComponent() {
     const fetchData = async () => {
       // Get user session
       const { data: { user } } = await supabase.auth.getUser();
+
+      console.log(user);
       
       if (user) {
         // Check if the user has a profile
