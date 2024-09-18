@@ -4,51 +4,66 @@ import styles from '../components/ProjectComponent.module.css';
 
 export default function ProjectComponent() {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        // Get the session to retrieve the user's UUID from Supabase Auth
-        const { data: { session } } = await supabase.auth.getSession();
-        
-        if (!session || !session.user) throw new Error("User not logged in");
-
-        const userUuid = session.user.id; // This is the UUID from Supabase Auth
-        
-        // Fetch the bigint user ID based on the UUID from the `user` table
-        const { data: userData, error: userError } = await supabase
-          .from('user') // Ensure you are querying the correct schema
-          .select('id')
-          .eq('userid', userUuid);
-        
-        if (userError) throw userError;
-        if (userData.length === 0) throw new Error("User not found");
-
-        const userId = userData[0].id; // Get the bigint user ID
-
-        // Now fetch projects using the bigint user_id from the project table
-        const { data: projectsData, error: projectsError } = await supabase
-          .from('project') // Ensure you are querying the correct schema
+    const fetchData = async () => {
+      // Get user session
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (user) {
+        // Check if the user has a profile
+        const { data: profile, error: profileError } = await supabase
+          .from('profile')
           .select('*')
-          .eq('user_id', userId);
+          .eq('id', user.id)
+          .single(); // Assuming one profile per user
 
-        if (projectsError) throw projectsError;
+        if (profileError) {
+          console.error("Error fetching profile:", profileError);
+          setError(profileError.message);
+        }
 
-        setProjects(projectsData);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
+        // If no profile exists, insert a new one
+        if (!profile) {
+          const { error: insertError } = await supabase
+            .from('profile')
+            .insert([
+              {
+                id: user.id,
+                firstname: 'John', // Göra form för detta sen.
+                lastname: 'Doe',
+                organization: 'Tech Inc.'   
+              }
+            ]);
+
+          if (insertError) {
+            console.error("Error creating profile:", insertError);
+            setError(insertError.message);
+          }
+        }
+
+        // Fetch projects associated with the user
+        const { data: projectsData, error: projectsError } = await supabase
+          .from('project')
+          .select('*')
+          .eq('user_id', user.id); // Assuming `user_id` is the column in `project`
+
+        if (projectsError) {
+          console.error("Error fetching projects:", projectsError);
+          setError(projectsError.message);
+        } else {
+          setProjects(projectsData || []);
+        }
       }
     };
 
-    fetchProjects();
+    fetchData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   return (
     <div className={styles.projectContainer}>
@@ -56,7 +71,9 @@ export default function ProjectComponent() {
         projects.map((project) => (
           <div key={project.id} className={styles.projectCard}>
             <h3>{project.name}</h3>
-            <p>{project.description}</p>
+            <p>Project Country: {project.country}</p>
+            <p>Project Currency: {project.currency}</p>
+            <p>Project custom id: {project.custom_project_id}</p>
           </div>
         ))
       ) : (
