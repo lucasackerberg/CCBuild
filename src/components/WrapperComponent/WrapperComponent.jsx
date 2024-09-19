@@ -1,11 +1,13 @@
-import ProjectComponent from "../ProjectComponent/ProjectComponent";
-import { CreateProject } from "../createProject/CreateProject";
+import ProjectComponent from '../ProjectComponent/ProjectComponent';
+import { useUser } from '../../contexts/UserContext';
 
 export default function WrapperComponent() {
+  const { profile, loading } = useUser();
+
   return (
-    <div>
+    <>
+      <h1>Welcome {profile.firstname}</h1>
       <ProjectComponent></ProjectComponent>
-      <CreateProject></CreateProject>
-    </div>
+    </>
   );
 }
