@@ -28,5 +28,5 @@ export const useProjects = () => {
     }
   };
 
-  return { loading, error, addProject };
+  return { loading, error, addProject, projects };
 };
