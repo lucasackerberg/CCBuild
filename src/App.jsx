@@ -1,7 +1,7 @@
 import './index.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginComponent from './components/AuthComponents/LoginComponent';
-import Dashboard from './components/WrapperComponent/WrapperComponent';
+import WrapperComponent from './components/WrapperComponent/WrapperComponent';
 import RegisterComponent from './components/AuthComponents/RegisterComponent';
 import { UserProvider } from './contexts/UserContext';
 
@@ -15,7 +15,7 @@ export default function App() {
         />
         <Route
           path="/dashboard"
-          element={<Dashboard />}
+          element={<WrapperComponent />}
         />
         <Route
           path="/"

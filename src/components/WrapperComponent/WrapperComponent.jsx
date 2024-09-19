@@ -1,5 +1,6 @@
 import ProjectComponent from '../ProjectComponent/ProjectComponent';
 import { useUser } from '../../contexts/UserContext';
+import { LogoutComponent } from '../LogoutComponent/LogoutComponent';
 
 export default function WrapperComponent() {
   const { profile, loading } = useUser();
@@ -16,6 +17,7 @@ export default function WrapperComponent() {
     <>
       <h1>Welcome {profile.firstname}</h1>
       <ProjectComponent />
+      <LogoutComponent></LogoutComponent>
     </>
   );
 }

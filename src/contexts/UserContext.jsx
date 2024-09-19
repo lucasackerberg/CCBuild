@@ -6,6 +6,7 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState();
   const [profile, setProfile] = useState();
+  const [products, setProducts] = useState([]);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,10 +26,30 @@ export const UserProvider = ({ children }) => {
           .select('*')
           .eq('user_id', userId);
         setProjects(data);
+        if (data.length > 0) {
+          fetchProducts(data);
+          console.log("hämta produkter");
+        }
       } catch (err) {
         console.error('Error fetching projects:', err.message);
       }
     };
+
+    const fetchProducts = async (projects) => {
+      try {
+        const projectIds = projects.map((project) => project.id);
+        console.log("Projektidn: " + projectIds);
+        const { data: productData } = await supabase
+          .from('products')
+          .select('*')
+          .in('project_id', projectIds);
+        setProducts(productData);
+        console.log(productData);
+      } catch (err) {
+        console.error('Error fetching products:', err.message);
+      }
+    };
+
 
     const fetchProfile = async (userId) => {
       try {
@@ -63,7 +84,9 @@ export const UserProvider = ({ children }) => {
         loading,
         profile,
         projects,
+        products,
         setProjects,
+        setProducts,
         setProfile,
       }}
     >
