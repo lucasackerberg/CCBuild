@@ -48,7 +48,9 @@ export default function RegisterComponent() {
           <button type="submit">Register</button>
         </form>
       )}
-      <h3>Want to login? <a href="/">Login</a></h3>
+      <h3>
+        Want to login? <a href="/">Login</a>
+      </h3>
     </div>
   );
 }

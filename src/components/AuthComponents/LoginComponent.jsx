@@ -47,11 +47,16 @@ export default function LoginComponent() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" disabled={loading}>
+        <button
+          type="submit"
+          disabled={loading}
+        >
           {loading ? 'Logging in...' : 'Login'}
         </button>
       </form>
-      <h3>Don't have an account? <a href="/register">Register here!</a></h3>
+      <h3>
+        Don't have an account? <a href="/register">Register here!</a>
+      </h3>
     </div>
   );
 }
