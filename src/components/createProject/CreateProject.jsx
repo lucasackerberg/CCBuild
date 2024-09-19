@@ -36,6 +36,7 @@ export const CreateProject = () => {
         .insert([dataWithUser]);
 
       if (error) {
+        console.log(dataWithUser);
         console.error("Error inserting data:", error);
       } else {
         console.log("Data inserted:", data);
