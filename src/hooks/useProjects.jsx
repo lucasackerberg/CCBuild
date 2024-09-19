@@ -4,7 +4,7 @@ import { useUser } from '../contexts/UserContext';
 
 export const useProjects = () => {
   const { user, projects, setProjects } = useUser();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Ändrade denna till false på init. Annars står det bara loading hela tiden när man har loggat in? 
   const [error, setError] = useState(null);
 
   const addProject = async (projectData) => {
