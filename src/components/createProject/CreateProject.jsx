@@ -12,10 +12,12 @@ export const CreateProject = () => {
     custom_project_id: "",
     organization: "",
   });
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -30,7 +32,7 @@ export const CreateProject = () => {
 
       // Insert formData into the 'project' table
       const { data, error } = await supabase
-        .from("project")
+        .from("projects")
         .insert([dataWithUser]);
 
       if (error) {
@@ -46,6 +48,7 @@ export const CreateProject = () => {
       <Button onClick={() => setShowForm(true)} variant="primary">
         Start Project
       </Button>
+
       {showForm && (
         <Form className="d-flex flex-column">
           <Form.Group className="mb-3 flex-column">
