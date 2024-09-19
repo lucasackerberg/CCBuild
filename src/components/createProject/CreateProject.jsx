@@ -30,10 +30,11 @@ export const CreateProject = () => {
 
       // Insert formData into the 'project' table
       const { data, error } = await supabase
-        .from("project")
+        .from("projects")
         .insert([dataWithUser]);
 
       if (error) {
+        console.log(dataWithUser);
         console.error("Error inserting data:", error);
       } else {
         console.log("Data inserted:", data);
