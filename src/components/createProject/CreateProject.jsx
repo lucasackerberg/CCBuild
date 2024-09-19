@@ -1,17 +1,20 @@
-import { Button, Form } from "react-bootstrap";
-import { useState } from "react";
-import supabase from "../../supabaseClient";
+import { Button, Form } from 'react-bootstrap';
+import { useState } from 'react';
+import { useProjects } from '../../hooks/useProjects';
+import { useUser } from '../../contexts/UserContext';
 
 export const CreateProject = () => {
+  const { profile, loading } = useUser();
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState({
-    name: "",
-    country: "sverige",
-    currency: "SEK",
-    description: "",
-    custom_project_id: "",
-    organization: "",
+    name: '',
+    country: 'sverige',
+    currency: 'SEK',
+    description: '',
+    custom_project_id: '',
+    organization: '',
   });
+  const { addProject } = useProjects();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -20,33 +23,15 @@ export const CreateProject = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    console.log(user);
-
-    if (user) {
-      const dataWithUser = { ...formData, user_id: user.id };
-
-      // Insert formData into the 'project' table
-      const { data, error } = await supabase
-        .from("projects")
-        .insert([dataWithUser]);
-
-      if (error) {
-        console.log(dataWithUser);
-        console.error("Error inserting data:", error);
-      } else {
-        console.log("Data inserted:", data);
-      }
-    }
+    await addProject(formData);
   };
 
   return (
     <div>
-      <Button onClick={() => setShowForm(true)} variant="primary">
+      <Button
+        onClick={() => setShowForm(true)}
+        variant="primary"
+      >
         Start Project
       </Button>
 
@@ -111,11 +96,13 @@ export const CreateProject = () => {
               onChange={handleChange}
               name="organization"
             >
-              <option>Database 1</option>
-              <option>Database 2</option>
+              <option>{profile.organization}</option>
             </Form.Select>
           </Form.Group>
-          <Button onClick={handleSubmit} variant="primary">
+          <Button
+            onClick={handleSubmit}
+            variant="primary"
+          >
             Submit
           </Button>
         </Form>
