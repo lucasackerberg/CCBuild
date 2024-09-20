@@ -4,6 +4,8 @@ import LoginComponent from './components/AuthComponents/LoginComponent';
 import WrapperComponent from './components/WrapperComponent/WrapperComponent';
 import RegisterComponent from './components/AuthComponents/RegisterComponent';
 import { UserProvider } from './contexts/UserContext';
+import ProjectList from './components/ProjectList/ProjectList';
+import ProductContainer from './components/ProductContainer/ProductContainer';
 
 export default function App() {
   return (
@@ -16,6 +18,10 @@ export default function App() {
         <Route
           path="/dashboard"
           element={<WrapperComponent />}
+        />
+        <Route
+          path="/projects/:id"
+          element={<ProductContainer />}
         />
         <Route
           path="/"
