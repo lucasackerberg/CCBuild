@@ -9,6 +9,7 @@ const ProductContainer = () => {
   return (
     <div>
       <h1>Project Details</h1>
+      <button>Lägg till produkt</button>
       <ProductList products={products} projectId={id} />
     </div>
   );
