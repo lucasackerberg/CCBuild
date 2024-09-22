@@ -1,24 +1,25 @@
 import React from 'react';
 import { useUser } from '../../contexts/UserContext';
 
-export const ProductList = () => {
-  const { products, loading } = useUser();
+export const ProductList = ({ projectId, products }) => {
+  const { loading } = useUser();
 
-  const filteredProducts = products.filter(
-    (product) => product.project_id === projectId
+  console.log('projectId:', typeof projectId, projectId);
+  console.log('Products:', products);
+
+  const filteredProducts = products?.filter(
+    (product) => String(product.project_id) === String(projectId)
   );
-  console.log(products);
 
-  /*   if (filteredProducts.length === 0)
-    return <div>No products for this project.</div>; */
+  console.log('Filtered Products:', filteredProducts); // Logs the filtered result
 
   if (loading) return <div>Loading...</div>;
-  if (!products || products.length === 0) return <div>No products found.</div>;
+  if (!filteredProducts || filteredProducts.length === 0) return <div>No products found for this project.</div>;
 
   return (
     <div>
       <ul>
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <li key={product.id}>
             <h3>{product.name}</h3>
             <p>Description: {product.description}</p>
