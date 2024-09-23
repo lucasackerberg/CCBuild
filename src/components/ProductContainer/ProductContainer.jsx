@@ -6,7 +6,7 @@ import StepperForm from '../StepperForm/StepperForm';
 const ProductContainer = () => {
   const { id } = useParams();
   const { products } = useUser();
-  console.log('detaa är ett test' + typeof id, id);
+  console.log("detta är ett test" + typeof id, id);
   return (
     <div>
       <h1>Project Details</h1>

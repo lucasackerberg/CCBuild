@@ -11,6 +11,7 @@ export const ProjectList = () => {
   if (error) return <div>Error: {error}</div>;
 
   console.log(projects);
+  console.log("Products i projectlist: " + products);
 
   return (
     <div className={styles.project}>
