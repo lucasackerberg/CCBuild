@@ -38,17 +38,23 @@ export const UserProvider = ({ children }) => {
     const fetchProducts = async (projects) => {
       try {
         const projectIds = projects.map((project) => project.id);
-        console.log("Projektidn: " + projectIds);
+        console.log("Project IDs: ", projectIds);
+    
         const { data: productData } = await supabase
           .from('products')
-          .select('*')
+          .select(`
+            *,
+            product_status (marknadsplatsen, status, quantity)
+          `)
           .in('project_id', projectIds);
+    
         setProducts(productData);
-        console.log(productData);
+        console.log("Products with status: ", productData);
       } catch (err) {
         console.error('Error fetching products:', err.message);
       }
     };
+    
 
 
     const fetchProfile = async (userId) => {

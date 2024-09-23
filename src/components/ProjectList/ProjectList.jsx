@@ -21,7 +21,7 @@ export const ProjectList = () => {
         <p key={project.id}>
           <Link to={`/projects/${project.id}`}>{project.name}</Link>
           {/* Om projektet inte har produkter sp ska detta inte visas antagligen? */}
-          {/* <ProductList projectId={project.id} /> */}
+          <ProductList products={products} projectId={project.id} />
         </p>
       ))}
     </div>
