@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
-import styles from '../StepperForm/StepperForm.module.css'; // Import the CSS module
+import styles from '../StepperForm/StepperForm.module.css';
+import { useUser } from '../../contexts/UserContext';
 
 const GeneralData = () => {
-  const { register } = useFormContext(); // Use useFormContext to access the form context
+  const { register } = useFormContext();
+  const { projects, categories, subcategories, productTypes, loading, error } = useUser();
+
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [filteredSubcategories, setFilteredSubcategories] = useState([]);
+  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+  const [filteredProductTypes, setFilteredProductTypes] = useState([]);
+
+  useEffect(() => {
+    if (selectedCategory) {
+      const filtered = subcategories.filter(subcategory => subcategory.category_id === parseInt(selectedCategory));
+      setFilteredSubcategories(filtered);
+      setSelectedSubcategory('');
+    } else {
+      setFilteredSubcategories([]);
+    }
+  }, [selectedCategory, subcategories]);
+
+  useEffect(() => {
+    if (selectedSubcategory) {
+      const types = productTypes[selectedSubcategory] || [];
+      console.log('Filtered Product Types:', types);
+      setFilteredProductTypes(types);
+    } else {
+      setFilteredProductTypes([]);
+    }
+  }, [selectedSubcategory, productTypes]);
 
   return (
     <>
@@ -11,40 +38,59 @@ const GeneralData = () => {
         {...register('projekt', { required: true })}
         className={styles.form_select}
       >
-        <option value="">T.ex. projekt</option>
-        {/* Add project options */}
+        <option key="test" value="">T.ex. projekt</option>
+        {projects.map((project) => (
+          <option key={project.id} value={project.id}>
+            {project.name}
+          </option>
+        ))}
       </select>
+
       <select
         {...register('produktkategori', { required: true })}
         className={styles.form_select}
+        onChange={(e) => setSelectedCategory(e.target.value)}
       >
-        <option value="">T.ex. dörrar</option>
-        {/* Add category options */}
+        <option key="test2" value="">Produktkategori</option>
+        {categories.map((category) => (
+          <option key={category.id} value={category.id}>
+            {category.name}
+          </option>
+        ))}
       </select>
+
       <select
         {...register('subkategori', { required: true })}
         className={styles.form_select}
+        onChange={(e) => setSelectedSubcategory(e.target.value)}
       >
-        <option value="">T.ex. dubbeldörr</option>
-        {/* Add subcategory options */}
+        <option key="test3" value="">T.ex. dubbeldörr</option>
+        {filteredSubcategories.map((subcategory, index) => (
+          <option key={`${subcategory.id}-${index}`} value={subcategory.id}>
+            {subcategory.name}
+          </option>
+        ))}
       </select>
+
       <select
         {...register('produkttyp', { required: true })}
         className={styles.form_select}
       >
-        <option value="">T.ex. dubbeldörr med glasparti</option>
-        {/* Add product type options */}
+        <option key="test4" value="">T.ex. dubbeldörr med glasparti</option>
+        {filteredProductTypes.map((type, index) => (
+          <option key={`${type.id}-${index}`} value={type.id}>
+            {type.name}
+          </option>
+        ))}
       </select>
+
       <input
         {...register('produktnamn', { required: true })}
         placeholder="T.ex. pardörr från gamla kontoret"
         className={styles.form_input}
       />
       <div className={styles.form_group}>
-        <label
-          htmlFor="produktbilder"
-          className={styles.form_label}
-        >
+        <label htmlFor="produktbilder" className={styles.form_label}>
           Produktbilder
         </label>
         <div className="file-upload">
@@ -59,7 +105,6 @@ const GeneralData = () => {
       </div>
     </>
   );
-  // Add cases for other steps
 };
 
 export default GeneralData;

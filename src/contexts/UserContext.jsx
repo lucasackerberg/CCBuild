@@ -8,6 +8,9 @@ export const UserProvider = ({ children }) => {
   const [profile, setProfile] = useState();
   const [products, setProducts] = useState([]);
   const [projects, setProjects] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState([]);
+  const [productTypes, setProductTypes] = useState({});
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,7 +31,6 @@ export const UserProvider = ({ children }) => {
         setProjects(data);
         if (data.length > 0) {
           fetchProducts(data);
-          console.log("hämta produkter");
         }
       } catch (err) {
         console.error('Error fetching projects:', err.message);
@@ -38,8 +40,6 @@ export const UserProvider = ({ children }) => {
     const fetchProducts = async (projects) => {
       try {
         const projectIds = projects.map((project) => project.id);
-        console.log("Project IDs: ", projectIds);
-    
         const { data: productData, error } = await supabase
           .from('products')
           .select(`
@@ -53,16 +53,14 @@ export const UserProvider = ({ children }) => {
             )
           `)
           .in('project_id', projectIds);
-    
+
         if (error) throw error;
-    
+
         setProducts(productData);
-        console.log("Products with status: ", productData);
       } catch (err) {
         console.error('Error fetching products:', err.message);
       }
     };
-    
 
     const fetchProfile = async (userId) => {
       try {
@@ -73,20 +71,69 @@ export const UserProvider = ({ children }) => {
         if (res.data.length > 0) {
           setProfile(res.data[0]);
         }
-        setLoading(false);
       } catch (err) {
         console.error('Error fetching profile:', err.message);
       }
     };
 
+    const fetchCategories = async () => {
+      try {
+        const { data } = await supabase.from('product_categories').select('*');
+        setCategories(data);
+      } catch (err) {
+        console.error('Error fetching categories:', err.message);
+      }
+    };
+
+    const fetchSubcategories = async () => {
+      try {
+        const { data } = await supabase.from('product_subcategories').select('*');
+        setSubcategories(data);
+        console.log("Fetched subcategories: ", data);
+        fetchProductTypesForSubcategories(data); // Fetch product types after fetching subcategories
+      } catch (err) {
+        console.error('Error fetching subcategories:', err.message);
+      }
+    };
+
+    const fetchProductTypesForSubcategories = async (subcategories) => {
+      const subcategoryIds = subcategories.map(subcategory => subcategory.id);
+      try {
+        const { data } = await supabase
+          .from('product_subcategory_type')
+          .select(`
+            subcategory_id,
+            type_id (
+              name
+            )
+          `)
+          .in('subcategory_id', subcategoryIds);
+
+        // Organize product types by subcategory
+        const typesBySubcategory = {};
+        data.forEach(item => {
+          if (!typesBySubcategory[item.subcategory_id]) {
+            typesBySubcategory[item.subcategory_id] = [];
+          }
+          typesBySubcategory[item.subcategory_id].push(item.type_id);
+        });
+
+        setProductTypes(typesBySubcategory); // Set the structured data
+      } catch (err) {
+        console.error('Error fetching product types:', err.message);
+      }
+    };
+
     const getUserAndData = async () => {
       const user = await fetchUser();
-      if (!user) {
-        return;
-      }
-      fetchProjects(user.id);
-      fetchProfile(user.id);
+      if (!user) return;
+      await fetchProjects(user.id);
+      await fetchProfile(user.id);
+      await fetchCategories();
+      await fetchSubcategories();
+      setLoading(false); // Set loading to false after fetching all data
     };
+    
     getUserAndData();
   }, []);
 
@@ -98,6 +145,9 @@ export const UserProvider = ({ children }) => {
         profile,
         projects,
         products,
+        categories,
+        subcategories,
+        productTypes, // This will be an object mapping subcategory IDs to their product types
         setProjects,
         setProducts,
         setProfile,
