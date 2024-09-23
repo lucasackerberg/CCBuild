@@ -4,6 +4,8 @@ import styles from '../StepperForm/StepperForm.module.css'; // We'll define our 
 import GeneralData from '../GeneralData/GeneralData';
 import ProductinaformationStep from '../ProductInformation/ProductInformation';
 import AttributesForm from '../AttributesForm/AttributesForm';
+import QuantityStatusPlace from '../QuantityStatusPlace/QuantityStatusPlace';
+import Marketplace from '../marketplace/Marketplace';
 
 const steps = [
   '1. Generell information',
@@ -20,6 +22,7 @@ const StepperForm = () => {
     handleSubmit,
     formState: { errors },
     control,
+    watch,
   } = useForm();
 
   const onSubmit = (data) => {
@@ -59,6 +62,18 @@ const StepperForm = () => {
             <AttributesForm />
           </div>
         );
+      case 3:
+        return (
+          <div>
+            <QuantityStatusPlace />
+          </div>
+        );
+      case 4:
+        return (
+          <div>
+            <Marketplace />
+          </div>
+        );
       default:
         return <div>Step content not available</div>;
     }
@@ -82,7 +97,7 @@ const StepperForm = () => {
       </div>
       <div className={styles.card_content}>
         <FormProvider
-          {...{ register, handleSubmit, control, formState: { errors } }}
+          {...{ register, handleSubmit, control, watch, formState: { errors } }}
         >
           <form onSubmit={handleSubmit(onSubmit)}>
             {renderStepContent()}
