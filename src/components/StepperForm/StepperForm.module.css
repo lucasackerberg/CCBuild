@@ -1,0 +1,94 @@
+.card {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card_header {
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.card_content {
+  padding: 20px;
+}
+
+.stepper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.step {
+  font-size: 14px;
+  color: #666;
+}
+
+.step.active {
+  color: #0066cc;
+  font-weight: bold;
+}
+
+.form_select,
+.form_input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.form_group {
+  margin-bottom: 15px;
+}
+
+.form_label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.file_upload {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.file_input {
+  display: none;
+}
+
+.button_group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn_primary {
+  background-color: #0066cc;
+  color: white;
+}
+
+.btn_secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
