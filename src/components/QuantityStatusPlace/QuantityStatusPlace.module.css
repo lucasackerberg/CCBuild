@@ -1,0 +1,124 @@
+.formContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+input[type='radio'] {
+  display: none;
+}
+.star {
+  cursor: pointer;
+}
+.formTitle {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.formSubtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formRow {
+  display: flex;
+  gap: 20px;
+}
+
+.formRow .formGroup {
+  flex: 1;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.formSelect {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.infoIcon {
+  color: #0066cc;
+  cursor: help;
+}
+
+.fileUploadSection {
+  margin-top: 30px;
+}
+
+.fileTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 10px;
+}
+
+.fileTable th,
+.fileTable td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.fileButtons {
+  margin-bottom: 20px;
+}
+
+.fileButtons button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.navigationButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.backButton,
+.saveButton,
+.nextButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.backButton {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.saveButton {
+  background-color: #f0f0f0;
+  color: #333;
+  margin-right: 10px;
+}
+
+.nextButton {
+  background-color: #0066cc;
+  color: white;
+}
