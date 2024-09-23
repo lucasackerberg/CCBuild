@@ -40,13 +40,21 @@ export const UserProvider = ({ children }) => {
         const projectIds = projects.map((project) => project.id);
         console.log("Project IDs: ", projectIds);
     
-        const { data: productData } = await supabase
+        const { data: productData, error } = await supabase
           .from('products')
           .select(`
             *,
-            product_status (marknadsplatsen, status, quantity)
+            product_status:product_status_product_id_fkey (
+              marketplace,
+              status,
+              quantity,
+              functional_condition,
+              aesthetic_condition
+            )
           `)
           .in('project_id', projectIds);
+    
+        if (error) throw error;
     
         setProducts(productData);
         console.log("Products with status: ", productData);
@@ -55,7 +63,6 @@ export const UserProvider = ({ children }) => {
       }
     };
     
-
 
     const fetchProfile = async (userId) => {
       try {
