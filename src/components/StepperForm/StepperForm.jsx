@@ -26,6 +26,7 @@ const StepperForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log("DATA");
     console.log(data);
     // Handle form submission
   };
@@ -117,6 +118,12 @@ const StepperForm = () => {
                 className={`${styles.btn} ${styles.primary}`}
               >
                 Nästa
+              </button>
+              <button
+                type="submit"
+                className={`${styles.btn} ${styles.primary}`}
+              >
+                Submit
               </button>
             </div>
           </form>
