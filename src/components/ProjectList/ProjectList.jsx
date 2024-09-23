@@ -14,12 +14,13 @@ export const ProjectList = () => {
   console.log("Products i projectlist: " + products);
 
   return (
-    <div
-      className={styles.project_container}
-      id="project-container"
-    >
+    <div className={styles.project}>
       {projects.map((project) => (
-        <div key={project.id}>
+        <div
+          key={project.id}
+          className={styles.project_container}
+          id="project-container"
+        >
           <Link to={`/projects/${project.id}`}>{project.name}</Link>
           {/* Om projektet inte har produkter sp ska detta inte visas antagligen? */}
           <ProductList

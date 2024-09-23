@@ -14,7 +14,8 @@ export const ProductList = ({ projectId, products }) => {
   console.log('Filtered Products:', filteredProducts); // Logs the filtered result
 
   if (loading) return <div>Loading...</div>;
-  if (!filteredProducts || filteredProducts.length === 0) return <div>No products found for this project.</div>;
+  if (!filteredProducts || filteredProducts.length === 0)
+    return <div>No products found for this project.</div>;
 
   return (
     <div>
