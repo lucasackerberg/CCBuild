@@ -5,7 +5,8 @@ import { useUser } from '../../contexts/UserContext';
 
 const GeneralData = () => {
   const { register } = useFormContext();
-  const { projects, categories, subcategories, productTypes, loading, error } = useUser();
+  const { projects, categories, subcategories, productTypes, loading, error } =
+    useUser();
 
   const [selectedCategory, setSelectedCategory] = useState('');
   const [filteredSubcategories, setFilteredSubcategories] = useState([]);
@@ -14,7 +15,9 @@ const GeneralData = () => {
 
   useEffect(() => {
     if (selectedCategory) {
-      const filtered = subcategories.filter(subcategory => subcategory.category_id === parseInt(selectedCategory));
+      const filtered = subcategories.filter(
+        (subcategory) => subcategory.category_id === parseInt(selectedCategory)
+      );
       setFilteredSubcategories(filtered);
       setSelectedSubcategory('');
     } else {
@@ -35,62 +38,94 @@ const GeneralData = () => {
   return (
     <>
       <select
-        {...register('projekt', { required: true })}
+        {...register('project_id', { required: true })}
         className={styles.form_select}
       >
-        <option key="test" value="">T.ex. projekt</option>
+        <option
+          key="test"
+          value=""
+        >
+          T.ex. projekt
+        </option>
         {projects.map((project) => (
-          <option key={project.id} value={project.id}>
+          <option
+            key={project.id}
+            value={project.id}
+          >
             {project.name}
           </option>
         ))}
       </select>
-
       <select
-        {...register('produktkategori', { required: true })}
+        {...register('category_id', { required: true })}
         className={styles.form_select}
         onChange={(e) => setSelectedCategory(e.target.value)}
       >
-        <option key="test2" value="">Produktkategori</option>
+        <option
+          key="test2"
+          value=""
+        >
+          Produktkategori
+        </option>
         {categories.map((category) => (
-          <option key={category.id} value={category.id}>
+          <option
+            key={category.id}
+            value={category.id}
+          >
             {category.name}
           </option>
         ))}
       </select>
-
       <select
-        {...register('subkategori', { required: true })}
+        {...register('subcategory_id', { required: true })}
         className={styles.form_select}
         onChange={(e) => setSelectedSubcategory(e.target.value)}
       >
-        <option key="test3" value="">T.ex. dubbeldörr</option>
+        <option
+          key="test3"
+          value=""
+        >
+          T.ex. dubbeldörr
+        </option>
         {filteredSubcategories.map((subcategory, index) => (
-          <option key={`${subcategory.id}-${index}`} value={subcategory.id}>
+          <option
+            key={`${subcategory.id}-${index}`}
+            value={subcategory.id}
+          >
             {subcategory.name}
           </option>
         ))}
       </select>
-
+      // TODO add correct column/table for produkttyp
       <select
         {...register('produkttyp', { required: true })}
         className={styles.form_select}
       >
-        <option key="test4" value="">T.ex. dubbeldörr med glasparti</option>
+        <option
+          key="test4"
+          value=""
+        >
+          T.ex. dubbeldörr med glasparti
+        </option>
         {filteredProductTypes.map((type, index) => (
-          <option key={`${type.product_type.id}-${index}`} value={type.product_type.id}>
+          <option
+            key={`${type.product_type.id}-${index}`}
+            value={type.product_type.id}
+          >
             {type.product_type.name}
           </option>
         ))}
       </select>
-
       <input
-        {...register('produktnamn', { required: true })}
+        {...register('name', { required: true })}
         placeholder="T.ex. pardörr från gamla kontoret"
         className={styles.form_input}
       />
       <div className={styles.form_group}>
-        <label htmlFor="produktbilder" className={styles.form_label}>
+        <label
+          htmlFor="produktbilder"
+          className={styles.form_label}
+        >
           Produktbilder
         </label>
         <div className="file-upload">

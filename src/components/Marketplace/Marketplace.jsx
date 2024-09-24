@@ -49,19 +49,19 @@ const Marketplace = () => {
         </div>
         <div>
           <div>
-            <FormCheck name="freight" />
+            <FormCheck name="send_option" />
             <label
               className={styles.label}
-              htmlFor="freight"
+              htmlFor="send_option"
             >
               Kan skickas med frakt
             </label>
           </div>
           <div>
-            <FormCheck name="pickUp" />
+            <FormCheck name="pickup_option" />
             <label
               className={styles.label}
-              htmlFor="pickUp"
+              htmlFor="pickup_option"
             >
               Kan hämtas på plats
             </label>
@@ -82,14 +82,14 @@ const Marketplace = () => {
           />{' '}
           <label
             className={styles.label}
-            htmlFor="zipcode"
+            htmlFor="postal_code"
           >
             Postkod
           </label>
           <input
             placeholder="400 12"
             type="text"
-            {...register('zipcode')}
+            {...register('postal_code')}
             className={styles.input}
           />{' '}
           <label
@@ -107,14 +107,14 @@ const Marketplace = () => {
         </div>
         <div>
           <label
-            htmlFor="contactPerson"
+            htmlFor="contact_person"
             className={styles.label}
           >
             Kontaktperson
           </label>
           <select
-            name="contactPerson"
-            {...register('contactPerson')}
+            name="contact_person"
+            {...register('contact_person')}
             className={styles.formSelect}
           >
             <option value="">JAG</option>
