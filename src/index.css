@@ -1,0 +1,16 @@
+:root {
+  --blue: #e7f1ff;
+  --form-blue: #f0f6fd;
+  --boston-blue: #195b97;
+  --blue-zodiac: #112f5f;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.main {
+  max-width: 1300px;
+  margin: auto;
+}
