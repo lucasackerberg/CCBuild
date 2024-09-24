@@ -1,22 +1,23 @@
-import React from "react";
-import supabase from "../../supabaseClient";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import supabase from '../../supabaseClient';
+import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 export const LogoutComponent = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    async function handleLogout() {
-        try {
-            const { error } = await supabase.auth.signOut();
-            if (error) throw error;
-            navigate('/');
-        } catch (error) {
-            console.error('Error logging out:', error.message);
-        }
+  async function handleLogout() {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      navigate('/');
+    } catch (error) {
+      console.error('Error logging out:', error.message);
     }
-    return(
-        <div>
-            <button onClick={handleLogout}>Logout</button>
-        </div>
-    )
-}
+  }
+  return (
+    <div>
+      <Button onClick={handleLogout}>Logout</Button>
+    </div>
+  );
+};

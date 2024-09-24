@@ -32,7 +32,7 @@ export const CreateProject = () => {
         onClick={() => setShowForm(true)}
         variant="primary"
       >
-        Start Project
+        Skapa nytt projekt
       </Button>
 
       {showForm && (

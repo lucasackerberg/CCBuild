@@ -1,4 +1,5 @@
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginComponent from './components/AuthComponents/LoginComponent';
 import WrapperComponent from './components/WrapperComponent/WrapperComponent';
