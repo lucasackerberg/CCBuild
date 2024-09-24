@@ -71,13 +71,13 @@ const QuantityStatusPlace = () => {
           {/* Add project options */}
         </select>{' '}
         <label
-          htmlFor="publishStatus"
+          htmlFor="marketplace"
           className={styles.label}
         >
           Publiceringsstatus
         </label>
         <select
-          {...register('publishStatus')}
+          {...register('marketplace')}
           className={styles.formSelect}
         >
           <option value="">Välj...</option>
@@ -90,13 +90,13 @@ const QuantityStatusPlace = () => {
           <option value="four">Automatiskt avpublicerad</option>
         </select>
         <label
-          htmlFor="date"
+          htmlFor="availability_date"
           className={styles.label}
         >
           Datum:
         </label>
         <Controller
-          name="date"
+          name="availability_date"
           control={control}
           render={({ field: { onChange, value } }) => (
             <DatePicker
@@ -118,24 +118,25 @@ const QuantityStatusPlace = () => {
           <div>
             <div>
               <label
-                htmlFor="cosmeticRating"
+                htmlFor="aesthetic_condition"
                 className={styles.label}
               >
                 Estetiskt skick
                 {[...Array(5)].map((star, i) => {
-                  const cosmeticRatingValue = i + 1;
+                  const aestheticConditionValue = i + 1;
                   return (
                     <label key={i}>
                       <input
                         type="radio"
-                        name="cosmeticRating"
-                        value={cosmeticRatingValue}
-                        {...register('cosmeticRating')}
+                        name="aesthetic_condition"
+                        value={aestheticConditionValue}
+                        {...register('aesthetic_condition')}
                       />
                       <FaStar
                         className="star"
                         color={
-                          cosmeticRatingValue <= watch('cosmeticRating')
+                          aestheticConditionValue <=
+                          watch('aesthetic_condition')
                             ? '#ffc107'
                             : '#e4e5e9'
                         }
@@ -145,24 +146,25 @@ const QuantityStatusPlace = () => {
                 })}
               </label>
               <label
-                htmlFor="functionalRating"
+                htmlFor="functional_condition"
                 className={styles.label}
               >
                 Funktionellt skick
                 {[...Array(5)].map((star, i) => {
-                  const functionalRatingValue = i + 1;
+                  const functionalConditionValue = i + 1;
                   return (
                     <label key={i}>
                       <input
                         type="radio"
-                        name="functionalRating"
-                        value={functionalRatingValue}
-                        {...register('functionalRating')}
+                        name="functional_condition"
+                        value={functionalConditionValue}
+                        {...register('functional_condition')}
                       />
                       <FaStar
                         className="star"
                         color={
-                          functionalRatingValue <= watch('functionalRating')
+                          functionalConditionValue <=
+                          watch('functional_condition')
                             ? '#ffc107'
                             : '#e4e5e9'
                         }
@@ -174,12 +176,12 @@ const QuantityStatusPlace = () => {
             </div>
             <div>
               <label
-                htmlFor="commentForRating"
+                htmlFor="comment"
                 className={styles.label}
               >
                 Kommentar
               </label>
-              <textarea name="commentForRating" />
+              <textarea name="comment" />
             </div>
           </div>
           <div>
@@ -205,12 +207,12 @@ const QuantityStatusPlace = () => {
                 </option>
               </select>
               <label
-                htmlFor="dismantlabilityComment"
+                htmlFor="dismantlability_comment"
                 className={styles.label}
               >
                 Kommentar
               </label>
-              <textarea name="dismantlabilityComment"></textarea>
+              <textarea name="dismantlability_comment"></textarea>
             </div>
             <div>
               <label
@@ -232,12 +234,12 @@ const QuantityStatusPlace = () => {
                 </option>
               </select>
               <label
-                htmlFor="accessabilityComment"
+                htmlFor="accessability_comment"
                 className={styles.label}
               >
                 Kommentar
               </label>
-              <textarea name="accessabilityComment"></textarea>
+              <textarea name="accessability_comment"></textarea>
             </div>
           </div>
           <div>

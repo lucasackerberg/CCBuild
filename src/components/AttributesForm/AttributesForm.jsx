@@ -7,23 +7,35 @@ import supabase from '../../supabaseClient';
 const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
   const { register } = useFormContext();
   const { productAttributes, setProductAttributes } = useUser();
-  
-  console.log('Category ID:', categoryId, 'Subcategory ID:', subcategoryId, 'Type ID:', typeId);
 
-  const fetchAttributes = useCallback(async (categoryId, subcategoryId, typeId) => {
-    try {
-      const { data, error } = await supabase
-        .from('product_attributes')
-        .select('*')
-        .or(`category_id.eq.${categoryId},subcategory_id.eq.${subcategoryId},type_id.eq.${typeId}`);
+  console.log(
+    'Category ID:',
+    categoryId,
+    'Subcategory ID:',
+    subcategoryId,
+    'Type ID:',
+    typeId
+  );
 
-      if (error) throw error;
+  const fetchAttributes = useCallback(
+    async (categoryId, subcategoryId, typeId) => {
+      try {
+        const { data, error } = await supabase
+          .from('product_attributes')
+          .select('*')
+          .or(
+            `category_id.eq.${categoryId},subcategory_id.eq.${subcategoryId},type_id.eq.${typeId}`
+          );
 
-      setProductAttributes(data);
-    } catch (err) {
-      console.error('Error fetching attributes:', err.message);
-    }
-  }, [setProductAttributes]);
+        if (error) throw error;
+
+        setProductAttributes(data);
+      } catch (err) {
+        console.error('Error fetching attributes:', err.message);
+      }
+    },
+    [setProductAttributes]
+  );
 
   useEffect(() => {
     if (categoryId && subcategoryId && typeId) {
@@ -52,10 +64,16 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
 
         {/* Render fetched product attributes */}
         {Object.keys(groupedAttributes).map((attributeName) => (
-          <div key={attributeName} className={styles.formGroup}>
+          <div
+            key={attributeName}
+            className={styles.formGroup}
+          >
             <h3 className={styles.attributeTitle}>{attributeName}</h3>
             {groupedAttributes[attributeName].map((attribute) => (
-              <div key={attribute.id} className={styles.radioGroup}>
+              <div
+                key={attribute.id}
+                className={styles.radioGroup}
+              >
                 <input
                   type="radio"
                   id={`attribute_${attribute.id}`} // Unique ID for accessibility
@@ -63,7 +81,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
                   {...register(`attribute_${attribute.id}`, { required: true })} // Register the input
                   className={styles.radioInput}
                 />
-                <label htmlFor={`attribute_${attribute.id}`} className={styles.radioLabel}>
+                <label
+                  htmlFor={`attribute_${attribute.id}`}
+                  className={styles.radioLabel}
+                >
                   {attribute.value} {/* Display the attribute value */}
                 </label>
               </div>
@@ -77,7 +98,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           Obligatoriska fält är markerade med stjärna (*)
         </p>
         <div className={styles.formGroup}>
-          <label htmlFor="material" className={styles.label}>
+          <label
+            htmlFor="material"
+            className={styles.label}
+          >
             Material
           </label>
           <input
@@ -87,20 +111,26 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="finish" className={styles.label}>
-            Färg / Finish
+          <label
+            htmlFor="color"
+            className={styles.label}
+          >
+            Färg
           </label>
           <input
-            {...register('finish', { required: true })}
+            {...register('color', { required: true })}
             placeholder="T.ex. röd"
             className={styles.input}
           />
         </div>
-        <label htmlFor="unitsLength" className={styles.label}>
+        <label
+          htmlFor="unit_measurement"
+          className={styles.label}
+        >
           Enhet Mått
         </label>
         <select
-          {...register('unitsLength', { required: true })}
+          {...register('unit_measurement', { required: true })}
           className={styles.formSelect}
         >
           <option value="">Välj...</option>
@@ -109,7 +139,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           <option value="m">m</option>
         </select>
         <div className={styles.formGroup}>
-          <label htmlFor="width" className={styles.label}>
+          <label
+            htmlFor="width"
+            className={styles.label}
+          >
             Bredd
           </label>
           <input
@@ -119,7 +152,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="length" className={styles.label}>
+          <label
+            htmlFor="length"
+            className={styles.label}
+          >
             Längd
           </label>
           <input
@@ -129,7 +165,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="height" className={styles.label}>
+          <label
+            htmlFor="height"
+            className={styles.label}
+          >
             Höjd
           </label>
           <input
@@ -139,7 +178,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="depth" className={styles.label}>
+          <label
+            htmlFor="depth"
+            className={styles.label}
+          >
             Djup
           </label>
           <input
@@ -149,7 +191,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="diameter" className={styles.label}>
+          <label
+            htmlFor="diameter"
+            className={styles.label}
+          >
             Diameter
           </label>
           <input
@@ -159,7 +204,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="thickness" className={styles.label}>
+          <label
+            htmlFor="thickness"
+            className={styles.label}
+          >
             Tjocklek
           </label>
           <input
@@ -168,11 +216,14 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
             className={styles.input}
           />
         </div>
-        <label htmlFor="unitsWeight" className={styles.label}>
+        <label
+          htmlFor="unit_weight"
+          className={styles.label}
+        >
           Enhet Mått
         </label>
         <select
-          {...register('unitsWeight', { required: true })}
+          {...register('unit_weight', { required: true })}
           className={styles.formSelect}
         >
           <option value="">Välj...</option>
