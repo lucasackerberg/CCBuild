@@ -14,6 +14,7 @@ export const CreateProject = () => {
     custom_project_id: '',
     organization: '',
   });
+
   const { addProject } = useProjects();
 
   const handleChange = (event) => {

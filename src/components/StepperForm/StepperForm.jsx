@@ -10,22 +10,28 @@ import Marketplace from '../Marketplace/Marketplace';
 const steps = [
   '1. Generell information',
   '2. Produktinformation',
-  '3. Energiklass',
-  '4. Anslut / Posta / Data',
+  '3. Egenskaper',
+  '4. Antal / Status / Plats',
   '5. Hantering för marknadsplats',
 ];
 
 const StepperForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const methods = useForm();
-  const { register, handleSubmit, formState: { errors }, control, watch } = methods;
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    control,
+    watch,
+  } = methods;
 
   const categoryId = watch('produktkategori'); // Watch the category_id field
   const subcategoryId = watch('subkategori'); // Watch the subcategory_id field
   const typeId = watch('produkttyp'); // Watch the type_id field
 
   const onSubmit = (data) => {
-    console.log("Form Data:", data);
+    console.log('Form Data:', data);
     // Handle form submission
   };
 
@@ -59,7 +65,7 @@ const StepperForm = () => {
         return (
           <div>
             {/* Pass the watched values to AttributesForm as props */}
-            <AttributesForm 
+            <AttributesForm
               categoryId={categoryId}
               subcategoryId={subcategoryId}
               typeId={typeId}

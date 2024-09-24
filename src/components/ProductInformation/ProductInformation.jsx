@@ -22,13 +22,13 @@ const ProductinaformationStep = () => {
 
       <div className={styles.formGroup}>
         <label
-          htmlFor="tillverkare"
+          htmlFor="manufacturer"
           className={styles.label}
         >
           Tillverkare / Leverantör
         </label>
         <input
-          {...register('tillverkare', { required: true })}
+          {...register('manufacturer', { required: true })}
           placeholder="T.ex. dörrbyggarna"
           className={styles.input}
         />
@@ -36,13 +36,13 @@ const ProductinaformationStep = () => {
 
       <div className={styles.formGroup}>
         <label
-          htmlFor="artikelnummer"
+          htmlFor="article_number"
           className={styles.label}
         >
           Artikelnummer
         </label>
         <input
-          {...register('artikelnummer', { required: true })}
+          {...register('article_number', { required: true })}
           placeholder="T.ex. 123 456"
           className={styles.input}
         />
@@ -51,13 +51,13 @@ const ProductinaformationStep = () => {
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
           <label
-            htmlFor="tillverkningsar"
+            htmlFor="manufacture_year"
             className={styles.label}
           >
             Tillverkningsår
           </label>
           <select
-            {...register('tillverkningsar', { required: true })}
+            {...register('manufacture_year', { required: true })}
             className={styles.select}
           >
             <option value="">Välj</option>
@@ -67,13 +67,13 @@ const ProductinaformationStep = () => {
 
         <div className={styles.formGroup}>
           <label
-            htmlFor="inkopsar"
+            htmlFor="purchase_year"
             className={styles.label}
           >
             Inköpsår
           </label>
           <select
-            {...register('inkopsar', { required: true })}
+            {...register('purchase_year', { required: true })}
             className={styles.select}
           >
             <option value="">Välj</option>
@@ -85,13 +85,13 @@ const ProductinaformationStep = () => {
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
           <label
-            htmlFor="gtin"
+            htmlFor="GTIN"
             className={styles.label}
           >
             GTIN <span className={styles.infoIcon}>ⓘ</span>
           </label>
           <input
-            {...register('gtin')}
+            {...register('GTIN')}
             placeholder="Ange här"
             className={styles.input}
           />
@@ -99,13 +99,13 @@ const ProductinaformationStep = () => {
 
         <div className={styles.formGroup}>
           <label
-            htmlFor="enr"
+            htmlFor="E_NR"
             className={styles.label}
           >
             E-NR <span className={styles.infoIcon}>ⓘ</span>
           </label>
           <input
-            {...register('enr')}
+            {...register('E_NR')}
             placeholder="Ange här"
             className={styles.input}
           />
@@ -115,13 +115,13 @@ const ProductinaformationStep = () => {
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
           <label
-            htmlFor="rsk"
+            htmlFor="RSK"
             className={styles.label}
           >
             RSK <span className={styles.infoIcon}>ⓘ</span>
           </label>
           <input
-            {...register('rsk')}
+            {...register('RSK')}
             placeholder="Ange här"
             className={styles.input}
           />
@@ -129,13 +129,13 @@ const ProductinaformationStep = () => {
 
         <div className={styles.formGroup}>
           <label
-            htmlFor="bk04"
+            htmlFor="BK04"
             className={styles.label}
           >
             BK04 <span className={styles.infoIcon}>ⓘ</span>
           </label>
           <input
-            {...register('bk04')}
+            {...register('BK04')}
             placeholder="Ange här"
             className={styles.input}
           />
@@ -144,13 +144,13 @@ const ProductinaformationStep = () => {
 
       <div className={styles.formGroup}>
         <label
-          htmlFor="bsab"
+          htmlFor="BSAB"
           className={styles.label}
         >
           BSAB <span className={styles.infoIcon}>ⓘ</span>
         </label>
         <input
-          {...register('bsab')}
+          {...register('BSAB')}
           placeholder="Ange här"
           className={styles.input}
         />
