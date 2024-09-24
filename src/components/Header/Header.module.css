@@ -1,0 +1,24 @@
+.logo {
+  height: 80px;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+.menu {
+  background-color: var(--blue-zodiac);
+  color: white;
+  font-size: 16px;
+  height: 55px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.search {
+  width: 462px;
+  height: 40px;
+  background-color: #f8f9fa26;
+  border: none;
+  margin-right: 10%;
+}
