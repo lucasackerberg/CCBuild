@@ -13,4 +13,5 @@ body {
 .main {
   max-width: 1300px;
   margin: auto;
+  padding: 24px;
 }
