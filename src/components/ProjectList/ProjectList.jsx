@@ -16,18 +16,21 @@ export const ProjectList = () => {
   return (
     <div className={styles.project}>
       {projects.map((project) => (
-        <div
+        <Link
           key={project.id}
+          to={`/projects/${project.id}`}
           className={styles.project_container}
-          id="project-container"
+          
         >
-          <Link to={`/projects/${project.id}`}>{project.name}</Link>
-          {/* Om projektet inte har produkter sp ska detta inte visas antagligen? */}
-          <ProductList
-            products={products}
-            projectId={project.id}
-          />
-        </div>
+          <div>
+            {project.name}
+            {/* Om projektet inte har produkter sp ska detta inte visas antagligen? */}
+            <ProductList
+              products={products}
+              projectId={project.id}
+            />
+          </div>
+        </Link>
       ))}
     </div>
   );
