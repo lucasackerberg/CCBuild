@@ -1,5 +1,7 @@
 .formContainer {
   max-width: 800px;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding: 20px;
 }
@@ -16,7 +18,27 @@
 }
 
 .formGroup {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
+}
+.formGroup_row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.formGroup_item {
+  display: flex;
+  flex-direction: column;
+}
+@media (max-width: 800px) {
+  .formGroup_row {
+    flex-direction: column;
+  }
+  .select,
+  .input {
+    width: 100%;
+  }
 }
 
 .formRow {
@@ -36,8 +58,8 @@
 
 .input,
 .select {
-  width: 100%;
-  padding: 10px;
+  width: 14em;
+  padding: 2px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -51,12 +73,17 @@
   font-size: 16px;
 }
 
+.fileInput {
+  display: none;
+}
+
 .fileUpload {
   border: 2px dashed #ccc;
   border-radius: 4px;
   padding: 20px;
   text-align: center;
   cursor: pointer;
+  width: 50%;
 }
 
 .infoIcon {
@@ -96,7 +123,8 @@
 
 .navigationButtons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 10px;
   margin-top: 30px;
 }
 

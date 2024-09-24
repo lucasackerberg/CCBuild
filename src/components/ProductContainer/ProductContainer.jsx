@@ -12,16 +12,20 @@ const ProductContainer = () => {
 
   const handleButtonClick = () => {
     setShowStepperForm(true);
-  }
+  };
   return (
     <div>
-      <h1>Project Details</h1>
-      {!showStepperForm && ( <button onClick={handleButtonClick}>Lägg till produkt</button> )}
+      <h1>{showStepperForm ? 'Skapa produkt' : 'Projekt detaljer'}</h1>
+      {!showStepperForm && (
+        <button onClick={handleButtonClick}>Lägg till produkt</button>
+      )}
       {showStepperForm && <StepperForm />}
-      <ProductList
-        products={products}
-        projectId={id}
-      />
+      {!showStepperForm && (
+        <ProductList
+          products={products}
+          projectId={id}
+        />
+      )}
     </div>
   );
 };

@@ -6,6 +6,7 @@ import ProductinaformationStep from '../ProductInformation/ProductInformation';
 import AttributesForm from '../AttributesForm/AttributesForm';
 import QuantityStatusPlace from '../QuantityStatusPlace/QuantityStatusPlace';
 import Marketplace from '../Marketplace/Marketplace';
+import { Button } from 'react-bootstrap';
 
 const steps = [
   '1. Generell information',
@@ -110,28 +111,28 @@ const StepperForm = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             {renderStepContent()}
             <div className={styles.button_group}>
-              <button
+              <Button
                 type="button"
+                variant="outline-primary"
                 onClick={prevStep}
                 disabled={currentStep === 0}
-                className={`${styles.btn} ${styles.btn_secondary}`}
               >
                 Spara utkast
-              </button>
-              <button
+              </Button>
+              <Button
                 type="button"
                 onClick={nextStep}
                 disabled={currentStep === steps.length - 1}
                 className={`${styles.btn} ${styles.primary}`}
               >
                 Nästa
-              </button>
-              <button
+              </Button>
+              <Button
                 type="submit"
                 className={`${styles.btn} ${styles.primary}`}
               >
                 Submit
-              </button>
+              </Button>
             </div>
           </form>
         </FormProvider>
