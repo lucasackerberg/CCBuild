@@ -1,21 +1,17 @@
 import React, { useEffect, useCallback } from 'react';
-import { useFormContext } from 'react-hook-form';
+import { useFormContext, useFieldArray } from 'react-hook-form';
 import styles from './AttributesForm.module.css';
 import { useUser } from '../../contexts/UserContext';
 import supabase from '../../supabaseClient';
 
 const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
-  const { register } = useFormContext();
+  const { register, control } = useFormContext();
   const { productAttributes, setProductAttributes } = useUser();
 
-  console.log(
-    'Category ID:',
-    categoryId,
-    'Subcategory ID:',
-    subcategoryId,
-    'Type ID:',
-    typeId
-  );
+  const { fields } = useFieldArray({
+    control,
+    name: 'attributes', // Name to identify the field array
+  });
 
   const fetchAttributes = useCallback(
     async (categoryId, subcategoryId, typeId) => {
@@ -62,14 +58,14 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
           Obligatoriska fält är markerade med stjärna (*)
         </p>
 
-        {/* Render fetched product attributes */}
-        {Object.keys(groupedAttributes).map((attributeName) => (
+        {Object.keys(groupedAttributes).map((attributeName, groupIndex) => (
           <div
             key={attributeName}
             className={styles.formGroup}
           >
             <h3 className={styles.attributeTitle}>{attributeName}</h3>
-            {groupedAttributes[attributeName].map((attribute) => (
+
+            {groupedAttributes[attributeName].map((attribute, index) => (
               <div
                 key={attribute.id}
                 className={styles.radioGroup}
@@ -77,8 +73,10 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
                 <input
                   type="radio"
                   id={`attribute_${attribute.id}`} // Unique ID for accessibility
-                  value={attribute.value} // Set the value for the radio button
-                  {...register(`attribute_${attribute.id}`, { required: true })} // Register the input
+                  value={attribute.id} // Set the value for the radio button
+                  {...register(`attributes.${groupIndex}.value`, {
+                    required: true,
+                  })} // Register the field array item
                   className={styles.radioInput}
                 />
                 <label

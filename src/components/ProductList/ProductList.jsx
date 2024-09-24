@@ -4,14 +4,9 @@ import { useUser } from '../../contexts/UserContext';
 export const ProductList = ({ projectId, products }) => {
   const { loading } = useUser();
 
-  console.log('projectId:', typeof projectId, projectId);
-  console.log('Products:', products);
-
   const filteredProducts = products?.filter(
     (product) => String(product.project_id) === String(projectId)
   );
-
-  console.log('Filtered Products:', filteredProducts); // Logs the filtered result
 
   if (loading) return <div>Loading...</div>;
   if (!filteredProducts || filteredProducts.length === 0)

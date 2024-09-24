@@ -7,6 +7,7 @@ import AttributesForm from '../AttributesForm/AttributesForm';
 import QuantityStatusPlace from '../QuantityStatusPlace/QuantityStatusPlace';
 import Marketplace from '../Marketplace/Marketplace';
 import { Button } from 'react-bootstrap';
+import supabase from '../../supabaseClient';
 
 const steps = [
   '1. Generell information',
@@ -27,13 +28,116 @@ const StepperForm = () => {
     watch,
   } = methods;
 
-  const categoryId = watch('produktkategori'); // Watch the category_id field
-  const subcategoryId = watch('subkategori'); // Watch the subcategory_id field
-  const typeId = watch('produkttyp'); // Watch the type_id field
+  const categoryId = watch('category_id'); // Watch the category_id field
+  const subcategoryId = watch('subcategory_id'); // Watch the subcategory_id field
+  const typeId = watch('type_id'); // Watch the type_id field
 
-  const onSubmit = (data) => {
-    console.log('Form Data:', data);
+  const onSubmit = async (formData) => {
+    console.log('Form Data:', formData);
     // Handle form submission
+
+    const {
+      name,
+      category_id,
+      subcategory_id,
+      description,
+      project_id,
+      type_id,
+      manufacturer,
+      manufacture_year,
+      purchase_year,
+      GTIN,
+      E_NR,
+      RSK,
+      BK04,
+      BSAB,
+      article_number,
+      material,
+      color,
+      width,
+      length,
+      height,
+      depth,
+      diameter,
+      thickness,
+      weight,
+      unit_weight,
+      unit_measurement,
+      comment,
+      send_option,
+      pickup_option,
+      address,
+      postal_code,
+      city,
+      constact_person,
+      attributes,
+    } = formData;
+
+    const product = {
+      name,
+      category_id,
+      subcategory_id,
+      description,
+      project_id,
+      type_id,
+    };
+
+    const { data, error } = await supabase
+      .from('products')
+      .insert(product)
+      .select();
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    const product_id = data[0].id;
+
+    const productInfo = {
+      product_id,
+      manufacturer,
+      manufacture_year,
+      purchase_year,
+      GTIN,
+      E_NR,
+      RSK,
+      BK04,
+      BSAB,
+      article_number,
+    };
+    await supabase.from('product_info').insert(productInfo);
+
+    const productSpec = {
+      product_id,
+      material,
+      color,
+      width,
+      length,
+      height,
+      depth,
+      diameter,
+      thickness,
+      weight,
+      unit_weight,
+      unit_measurement,
+    };
+    await supabase.from('product_specifications').insert(productSpec);
+
+    const marketplace = {
+      product_id,
+      comment,
+      send_option,
+      pickup_option,
+      address,
+      postal_code,
+      city,
+      constact_person,
+    };
+
+    await supabase.from('marketplace').insert(marketplace);
+    const insertAttributes = attributes.map((value) => {
+      return { product_id, attribute_id: value.value };
+    });
+    await supabase.from('product_attribute_values').insert(insertAttributes);
   };
 
   const nextStep = () => {
