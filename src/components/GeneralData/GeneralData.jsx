@@ -72,7 +72,7 @@ const GeneralData = () => {
       <div className={styles.formGroup_row}>
         <div className={styles.formGroup_item}>
           <label
-            htmlFor="produktkategori"
+            htmlFor="category_id"
             className={styles.label}
           >
             Produktkategori
@@ -100,7 +100,7 @@ const GeneralData = () => {
         </div>
         <div className={styles.formGroup_item}>
           <label
-            htmlFor="subkategori"
+            htmlFor="subcategory_id"
             className={styles.label}
           >
             Subkategori
@@ -128,14 +128,14 @@ const GeneralData = () => {
         </div>
         <div className={styles.formGroup_item}>
           <label
-            htmlFor="produkttyp"
+            htmlFor="type_id"
             className={styles.label}
           >
             Produkttyp
           </label>
-          {/* // TODO add correct column/table for produkttyp */}
+
           <select
-            {...register('produkttyp', { required: true })}
+            {...register('type_id', { required: true })}
             className={styles.select}
           >
             <option
@@ -157,7 +157,7 @@ const GeneralData = () => {
       </div>
       <div className={styles.formGroup}>
         <label
-          htmlFor="produktnamn"
+          htmlFor="name"
           className={styles.label}
         >
           Produktnamn

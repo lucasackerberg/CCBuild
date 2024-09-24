@@ -10,9 +10,6 @@ export const ProjectList = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  console.log(projects);
-  console.log("Products i projectlist: " + products);
-
   return (
     <div className={styles.project}>
       {projects.map((project) => (
@@ -20,7 +17,6 @@ export const ProjectList = () => {
           key={project.id}
           to={`/projects/${project.id}`}
           className={styles.project_container}
-          
         >
           <div>
             {project.name}
