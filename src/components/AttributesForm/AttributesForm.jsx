@@ -12,7 +12,7 @@ const AttributesForm = () => {
           Obligatoriska fält är markerade med stjärna (*)
         </p>
         <input
-          type="checkbox"
+          type="radio"
           {...register('checkboxFieldName')}
         />
       </div>

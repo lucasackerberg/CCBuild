@@ -5,7 +5,7 @@ import GeneralData from '../GeneralData/GeneralData';
 import ProductinaformationStep from '../ProductInformation/ProductInformation';
 import AttributesForm from '../AttributesForm/AttributesForm';
 import QuantityStatusPlace from '../QuantityStatusPlace/QuantityStatusPlace';
-import Marketplace from '../marketplace/Marketplace';
+import Marketplace from '../Marketplace/Marketplace';
 
 const steps = [
   '1. Generell information',

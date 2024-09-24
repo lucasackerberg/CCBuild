@@ -60,10 +60,6 @@
   cursor: pointer;
 }
 
-.file_input {
-/*   display: none; */
-}
-
 .button_group {
   display: flex;
   justify-content: space-between;

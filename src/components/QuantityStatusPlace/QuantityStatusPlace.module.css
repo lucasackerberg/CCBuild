@@ -4,7 +4,7 @@
   padding: 20px;
 }
 input[type='radio'] {
-  display: none;
+/*   display: none; */
 }
 .star {
   cursor: pointer;
