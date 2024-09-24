@@ -1,10 +1,17 @@
+#mainRow {
+  background-color: #e9ecef;
+}
+.formContainerSub {
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+}
 .formContainer {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
 }
 input[type='radio'] {
-/*   display: none; */
+  display: none;
 }
 .star {
   cursor: pointer;
@@ -21,7 +28,13 @@ input[type='radio'] {
 }
 
 .formGroup {
+  padding: 10px;
   margin-bottom: 20px;
+}
+
+.formGroupInner {
+  display: flex;
+  flex-direction: column;
 }
 
 .formRow {
@@ -42,14 +55,14 @@ input[type='radio'] {
 .input,
 .select {
   width: 100%;
-  padding: 10px;
+  padding: 2px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
 }
 .formSelect {
   width: 100%;
-  padding: 10px;
+  padding: 2px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;

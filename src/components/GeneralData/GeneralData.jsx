@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styles from './GeneralData.module.css';
 import { useUser } from '../../contexts/UserContext';
+import { Button } from 'react-bootstrap';
 
 const GeneralData = () => {
   const { register } = useFormContext();
@@ -50,7 +51,7 @@ const GeneralData = () => {
         </label>
         <select
           {...register('project_id', { required: true })}
-          className={styles.formSelect}
+          className={styles.select}
         >
           <option
             key="test"
@@ -68,97 +69,105 @@ const GeneralData = () => {
           ))}
         </select>
       </div>
-      <div className={styles.formGroup}>
-        <label
-          htmlFor="produktkategori"
-          className={styles.label}
-        >
-          Produktkategori
-        </label>
-        <select
-          {...register('category_id', { required: true })}
-          className={styles.formSelect}
-          onChange={(e) => setSelectedCategory(e.target.value)}
-        >
-          <option
-            key="test2"
-            value=""
+      <div className={styles.formGroup_row}>
+        <div className={styles.formGroup_item}>
+          <label
+            htmlFor="produktkategori"
+            className={styles.label}
           >
             Produktkategori
-          </option>
-          {categories.map((category) => (
-            <option
-              key={category.id}
-              value={category.id}
-            >
-              {category.name}
-            </option>
-          ))}
-        </select>
-        <label
-          htmlFor="subkategori"
-          className={styles.label}
-        >
-          Subkategori
-        </label>
-        <select
-          {...register('subcategory_id', { required: true })}
-          className={styles.formSelect}
-          onChange={(e) => setSelectedSubcategory(e.target.value)}
-        >
-          <option
-            key="test3"
-            value=""
+          </label>
+          <select
+            {...register('category_id', { required: true })}
+            className={styles.select}
+            onChange={(e) => setSelectedCategory(e.target.value)}
           >
-            T.ex. dubbeldörr
-          </option>
-          {filteredSubcategories.map((subcategory, index) => (
             <option
-              key={`${subcategory.id}-${index}`}
-              value={subcategory.id}
+              key="test2"
+              value=""
             >
-              {subcategory.name}
+              Produktkategori
             </option>
-          ))}
-        </select>
-        <label
-          htmlFor="produkttyp"
-          className={styles.label}
-        >
-          Produkttyp
-        </label>
-        // TODO add correct column/table for produkttyp
-        <select
-          {...register('produkttyp', { required: true })}
-          className={styles.formSelect}
-        >
-          <option
-            key="test4"
-            value=""
+            {categories.map((category) => (
+              <option
+                key={category.id}
+                value={category.id}
+              >
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className={styles.formGroup_item}>
+          <label
+            htmlFor="subkategori"
+            className={styles.label}
           >
-            T.ex. dubbeldörr med glasparti
-          </option>
-          {filteredProductTypes.map((type, index) => (
+            Subkategori
+          </label>
+          <select
+            {...register('subcategory_id', { required: true })}
+            className={styles.select}
+            onChange={(e) => setSelectedSubcategory(e.target.value)}
+          >
             <option
-              key={`${type.product_type.id}-${index}`}
-              value={type.product_type.id}
+              key="test3"
+              value=""
             >
-              {type.product_type.name}
+              T.ex. dubbeldörr
             </option>
-          ))}
-        </select>
+            {filteredSubcategories.map((subcategory, index) => (
+              <option
+                key={`${subcategory.id}-${index}`}
+                value={subcategory.id}
+              >
+                {subcategory.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className={styles.formGroup_item}>
+          <label
+            htmlFor="produkttyp"
+            className={styles.label}
+          >
+            Produkttyp
+          </label>
+          {/* // TODO add correct column/table for produkttyp */}
+          <select
+            {...register('produkttyp', { required: true })}
+            className={styles.select}
+          >
+            <option
+              key="test4"
+              value=""
+            >
+              T.ex. dubbeldörr med glasparti
+            </option>
+            {filteredProductTypes.map((type, index) => (
+              <option
+                key={`${type.product_type.id}-${index}`}
+                value={type.product_type.id}
+              >
+                {type.product_type.name}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      <label
-        htmlFor="produktnamn"
-        className={styles.label}
-      >
-        Produktnamn
-      </label>
-      <input
-        {...register('name', { required: true })}
-        placeholder="T.ex. pardörr från gamla kontoret"
-        className={styles.input}
-      />
+      <div className={styles.formGroup}>
+        <label
+          htmlFor="produktnamn"
+          className={styles.label}
+        >
+          Produktnamn
+        </label>
+        <input
+          {...register('name', { required: true })}
+          placeholder="T.ex. pardörr från gamla kontoret"
+          className={styles.input}
+        />
+      </div>
       <div className={styles.formGroup}>
         <label
           htmlFor="produktbilder"

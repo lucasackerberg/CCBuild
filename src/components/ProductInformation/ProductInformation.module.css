@@ -1,5 +1,7 @@
 .formContainer {
   max-width: 800px;
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
   padding: 20px;
 }
@@ -16,7 +18,16 @@
 }
 
 .formGroup {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
+}
+
+@media (max-width: 800px) {
+  .select,
+  .input {
+    width: 100%;
+  }
 }
 
 .formRow {
@@ -36,11 +47,32 @@
 
 .input,
 .select {
-  width: 100%;
-  padding: 10px;
+  width: 80%;
+  padding: 2px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
+}
+.formSelect {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileUpload {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
 }
 
 .infoIcon {
@@ -72,15 +104,12 @@
 .fileButtons button {
   margin-right: 10px;
   padding: 5px 10px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .navigationButtons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  gap: 10px;
   margin-top: 30px;
 }
 

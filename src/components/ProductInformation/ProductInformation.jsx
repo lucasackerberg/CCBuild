@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm, useFieldArray, useFormContext } from 'react-hook-form';
 import styles from './ProductInformation.module.css';
+import { Button } from 'react-bootstrap';
 
 const ProductinaformationStep = () => {
   const {
@@ -19,35 +20,37 @@ const ProductinaformationStep = () => {
       <p className={styles.formSubtitle}>
         Obligatoriska fält är markerade med stjärna (*)
       </p>
-
-      <div className={styles.formGroup}>
-        <label
-          htmlFor="manufacturer"
-          className={styles.label}
-        >
-          Tillverkare / Leverantör
-        </label>
-        <input
-          {...register('manufacturer', { required: true })}
-          placeholder="T.ex. dörrbyggarna"
-          className={styles.input}
-        />
+      <div
+        className={styles.formRow}
+        style={{ marginBottom: '40px' }}
+      >
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="manufacturer"
+            className={styles.label}
+          >
+            Tillverkare / Leverantör
+          </label>
+          <input
+            {...register('manufacturer', { required: true })}
+            placeholder="T.ex. dörrbyggarna"
+            className={styles.input}
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="article_number"
+            className={styles.label}
+          >
+            Artikelnummer
+          </label>
+          <input
+            {...register('article_number', { required: true })}
+            placeholder="T.ex. 123 456"
+            className={styles.input}
+          />
+        </div>
       </div>
-
-      <div className={styles.formGroup}>
-        <label
-          htmlFor="article_number"
-          className={styles.label}
-        >
-          Artikelnummer
-        </label>
-        <input
-          {...register('article_number', { required: true })}
-          placeholder="T.ex. 123 456"
-          className={styles.input}
-        />
-      </div>
-
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
           <label
@@ -184,15 +187,22 @@ const ProductinaformationStep = () => {
           </tbody>
         </table>
         <div className={styles.fileButtons}>
-          <button
+          <Button
             type="button"
+            variant="outline-primary"
             onClick={() => append({ filename: '', type: '', uploadDate: '' })}
           >
             Ladda upp ny fil
-          </button>
-          <button type="button">Ändra</button>
-          <button
+          </Button>
+          <Button
             type="button"
+            variant="outline-primary"
+          >
+            Ändra
+          </Button>
+          <Button
+            type="button"
+            variant="outline-primary"
             onClick={() => {
               const selectedIndices = fields.reduce(
                 (acc, field, index) => (field.selected ? [...acc, index] : acc),
@@ -202,7 +212,7 @@ const ProductinaformationStep = () => {
             }}
           >
             Radera
-          </button>
+          </Button>
         </div>
       </div>
     </div>
