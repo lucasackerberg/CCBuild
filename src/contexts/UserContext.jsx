@@ -11,6 +11,7 @@ export const UserProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [subcategories, setSubcategories] = useState([]);
   const [productTypes, setProductTypes] = useState({});
+  const [productAttributes, setProductAttributes] = useState([]); // Store attributes
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -89,40 +90,50 @@ export const UserProvider = ({ children }) => {
       try {
         const { data } = await supabase.from('product_subcategories').select('*');
         setSubcategories(data);
-        console.log("Fetched subcategories: ", data);
         fetchProductTypesForSubcategories(data); // Fetch product types after fetching subcategories
       } catch (err) {
         console.error('Error fetching subcategories:', err.message);
       }
     };
 
-    const fetchProductTypesForSubcategories = async (subcategories) => {
-      const subcategoryIds = subcategories.map(subcategory => subcategory.id);
-      try {
-        const { data } = await supabase
-          .from('product_subcategory_type')
-          .select(`
-            subcategory_id,
-            type_id (
-              name
-            )
-          `)
-          .in('subcategory_id', subcategoryIds);
+const fetchProductTypesForSubcategories = async (subcategories) => {
+  const subcategoryIds = subcategories.map(subcategory => subcategory.id);
+  try {
+    const { data } = await supabase
+      .from('product_subcategory_type')
+      .select(`
+        subcategory_id,
+        type_id,
+        product_types (
+          id,
+          name
+        )
+      `)
+      .in('subcategory_id', subcategoryIds);
 
-        // Organize product types by subcategory
-        const typesBySubcategory = {};
-        data.forEach(item => {
-          if (!typesBySubcategory[item.subcategory_id]) {
-            typesBySubcategory[item.subcategory_id] = [];
-          }
-          typesBySubcategory[item.subcategory_id].push(item.type_id);
-        });
-
-        setProductTypes(typesBySubcategory); // Set the structured data
-      } catch (err) {
-        console.error('Error fetching product types:', err.message);
+    // Organize product types by subcategory
+    const typesBySubcategory = {};
+    data.forEach(item => {
+      if (!typesBySubcategory[item.subcategory_id]) {
+        typesBySubcategory[item.subcategory_id] = [];
       }
-    };
+      // Push an object with both type_id and the associated product type information
+      typesBySubcategory[item.subcategory_id].push({
+        type_id: item.type_id,                   // The type_id from product_subcategory_type
+        product_type: {
+          id: item.product_types.id,              // The ID from product_types
+          name: item.product_types.name            // The name from product_types
+        }
+      });
+    });
+
+    setProductTypes(typesBySubcategory); // Set the structured data
+  } catch (err) {
+    console.error('Error fetching product types:', err.message);
+  }
+};
+
+
 
     const getUserAndData = async () => {
       const user = await fetchUser();
@@ -147,7 +158,9 @@ export const UserProvider = ({ children }) => {
         products,
         categories,
         subcategories,
-        productTypes, // This will be an object mapping subcategory IDs to their product types
+        productTypes,
+        productAttributes, // Provide attributes
+        setProductAttributes,
         setProjects,
         setProducts,
         setProfile,

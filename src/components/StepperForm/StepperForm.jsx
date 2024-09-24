@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
-import styles from '../StepperForm/StepperForm.module.css'; // We'll define our CSS in this file
+import styles from '../StepperForm/StepperForm.module.css';
 import GeneralData from '../GeneralData/GeneralData';
 import ProductinaformationStep from '../ProductInformation/ProductInformation';
 import AttributesForm from '../AttributesForm/AttributesForm';
@@ -17,17 +17,15 @@ const steps = [
 
 const StepperForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    control,
-    watch,
-  } = useForm();
+  const methods = useForm();
+  const { register, handleSubmit, formState: { errors }, control, watch } = methods;
+
+  const categoryId = watch('produktkategori'); // Watch the category_id field
+  const subcategoryId = watch('subkategori'); // Watch the subcategory_id field
+  const typeId = watch('produkttyp'); // Watch the type_id field
 
   const onSubmit = (data) => {
-    console.log("DATA");
-    console.log(data);
+    console.log("Form Data:", data);
     // Handle form submission
   };
 
@@ -60,7 +58,12 @@ const StepperForm = () => {
       case 2:
         return (
           <div>
-            <AttributesForm />
+            {/* Pass the watched values to AttributesForm as props */}
+            <AttributesForm 
+              categoryId={categoryId}
+              subcategoryId={subcategoryId}
+              typeId={typeId}
+            />
           </div>
         );
       case 3:
@@ -97,9 +100,7 @@ const StepperForm = () => {
         </div>
       </div>
       <div className={styles.card_content}>
-        <FormProvider
-          {...{ register, handleSubmit, control, watch, formState: { errors } }}
-        >
+        <FormProvider {...methods}>
           <form onSubmit={handleSubmit(onSubmit)}>
             {renderStepContent()}
             <div className={styles.button_group}>

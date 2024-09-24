@@ -78,8 +78,8 @@ const GeneralData = () => {
       >
         <option key="test4" value="">T.ex. dubbeldörr med glasparti</option>
         {filteredProductTypes.map((type, index) => (
-          <option key={`${type.id}-${index}`} value={type.id}>
-            {type.name}
+          <option key={`${type.product_type.id}-${index}`} value={type.product_type.id}>
+            {type.product_type.name}
           </option>
         ))}
       </select>
