@@ -17,6 +17,9 @@
   border-radius: 3.2px;
   border: 1px solid #ced4da;
   background: #fff;
+  &:disabled {
+    background-color: #e9ecef;
+  }
 }
 
 .label {

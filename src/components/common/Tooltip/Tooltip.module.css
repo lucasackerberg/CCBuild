@@ -1,0 +1,35 @@
+.tooltipContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipContent {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--blue);
+  padding: 12px;
+  border-radius: 4px;
+  z-index: 1;
+  width: max-content;
+  max-width: 220px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.tooltipArrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--blue) transparent transparent transparent;
+}
+
+.tooltipText {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}

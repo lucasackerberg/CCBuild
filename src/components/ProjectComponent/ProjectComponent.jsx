@@ -12,7 +12,7 @@ export default function ProjectComponent() {
     return <p>Loading...</p>;
   }
   return (
-    <div>
+    <>
       {profile ? (
         <>
           <CreateProject />
@@ -23,6 +23,6 @@ export default function ProjectComponent() {
       ) : (
         <AddUserInfo />
       )}
-    </div>
+    </>
   );
 }

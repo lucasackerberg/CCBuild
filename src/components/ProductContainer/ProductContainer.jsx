@@ -15,7 +15,7 @@ const ProductContainer = () => {
     setShowStepperForm(true);
   };
   return (
-    <div>
+    <>
       {!showStepperForm && (
         <Button onClick={handleButtonClick}>Lägg till produkt</Button>
       )}
@@ -26,7 +26,7 @@ const ProductContainer = () => {
           projectId={id}
         />
       )}
-    </div>
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import styles from './Input.module.css';
+import Tooltip from '../Tooltip/Tooltip';
 
 export const Input = ({
   htmlFor,
@@ -9,6 +10,9 @@ export const Input = ({
   placeholder,
   register,
   onChange,
+  disabled,
+  tooltip,
+  tooltipText,
 }) => {
   return (
     <div>
@@ -16,7 +20,8 @@ export const Input = ({
         htmlFor={htmlFor}
         className={styles.label}
       >
-        {label} {required && <span className={styles.required}>*</span>}
+        {label} {required && <span className={styles.required}>*</span>}{' '}
+        {tooltip && <Tooltip text={tooltipText}>ⓘ</Tooltip>}
       </label>
 
       {type === 'text' && (
@@ -27,6 +32,7 @@ export const Input = ({
           id={htmlFor}
           required={required}
           placeholder={placeholder}
+          disabled={disabled}
         />
       )}
 
@@ -37,6 +43,7 @@ export const Input = ({
           onChange={onChange}
           required={required}
           defaultValue={placeholder}
+          disabled={disabled}
         >
           <option
             disabled
@@ -63,6 +70,7 @@ export const Input = ({
           onChange={onChange}
           required={required}
           defaultValue={placeholder}
+          disabled={disabled}
         >
           <option
             disabled

@@ -71,6 +71,7 @@ const GeneralData = () => {
           placeholder="T ex. dubbeldörr"
           register={register}
           onChange={(e) => setSelectedSubcategory(e.target.value)}
+          disabled={!selectedCategory}
         />
 
         <Input
@@ -81,6 +82,7 @@ const GeneralData = () => {
           options={filteredProductTypes}
           placeholder="T ex. dubbeldörr slät"
           register={register}
+          disabled={!selectedSubcategory}
         />
       </div>
 
