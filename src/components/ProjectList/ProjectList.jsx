@@ -21,10 +21,10 @@ export const ProjectList = () => {
           <div>
             <h2>{project.name}</h2>
             {/* Om projektet inte har produkter sp ska detta inte visas antagligen? */}
-            <ProductList
+            {/* <ProductList
               products={products}
               projectId={project.id}
-            />
+            /> */}
           </div>
         </Link>
       ))}

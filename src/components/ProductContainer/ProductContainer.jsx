@@ -20,12 +20,12 @@ const ProductContainer = () => {
         <Button onClick={handleButtonClick}>Lägg till produkt</Button>
       )}
       {showStepperForm && <StepperForm />}
-      {!showStepperForm && (
+      {/* {!showStepperForm && (
         <ProductList
           products={products}
           projectId={id}
         />
-      )}
+      )} */}
     </>
   );
 };
