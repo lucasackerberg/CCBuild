@@ -9,6 +9,7 @@ export const Input = ({
   placeholder,
   register,
   onChange,
+  disabled,
 }) => {
   return (
     <div>
@@ -27,6 +28,7 @@ export const Input = ({
           id={htmlFor}
           required={required}
           placeholder={placeholder}
+          disabled={disabled}
         />
       )}
 
@@ -37,6 +39,7 @@ export const Input = ({
           onChange={onChange}
           required={required}
           defaultValue={placeholder}
+          disabled={disabled}
         >
           <option
             disabled
@@ -63,6 +66,7 @@ export const Input = ({
           onChange={onChange}
           required={required}
           defaultValue={placeholder}
+          disabled={disabled}
         >
           <option
             disabled
