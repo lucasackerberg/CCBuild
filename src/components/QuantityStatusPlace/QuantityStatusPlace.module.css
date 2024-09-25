@@ -10,9 +10,9 @@
   margin: 0 auto;
   padding: 20px;
 }
-/* input[type='radio'] {
+input[type='radio'] {
   display: none;
-} */
+}
 .star {
   cursor: pointer;
 }

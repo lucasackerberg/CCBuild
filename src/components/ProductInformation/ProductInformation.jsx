@@ -59,13 +59,11 @@ const ProductinaformationStep = () => {
           >
             Tillverkningsår
           </label>
-          <select
+          <input
             {...register('manufacture_year', { required: true })}
-            className={styles.select}
-          >
-            <option value="">Välj</option>
-            {/* Add year options */}
-          </select>
+            className={styles.input}
+            placeholder="T.ex. 1985"
+          ></input>
         </div>
 
         <div className={styles.formGroup}>
@@ -75,13 +73,11 @@ const ProductinaformationStep = () => {
           >
             Inköpsår
           </label>
-          <select
+          <input
             {...register('purchase_year', { required: true })}
-            className={styles.select}
-          >
-            <option value="">Välj</option>
-            {/* Add year options */}
-          </select>
+            className={styles.input}
+            placeholder="T.ex. 1980"
+          ></input>
         </div>
       </div>
 
