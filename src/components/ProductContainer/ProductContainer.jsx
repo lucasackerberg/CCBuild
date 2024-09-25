@@ -15,7 +15,6 @@ const ProductContainer = () => {
   };
   return (
     <div>
-      <h1>{showStepperForm ? 'Skapa produkt' : 'Projekt detaljer'}</h1>
       {!showStepperForm && (
         <button onClick={handleButtonClick}>Lägg till produkt</button>
       )}

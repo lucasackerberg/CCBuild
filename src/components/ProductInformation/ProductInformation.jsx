@@ -2,6 +2,8 @@ import React from 'react';
 import { useForm, useFieldArray, useFormContext } from 'react-hook-form';
 import styles from './ProductInformation.module.css';
 import { Button } from 'react-bootstrap';
+import { StepperDiv } from '../common/StepperDiv/StepperDiv';
+import { Input } from '../common/FormInput/Input';
 
 const ProductinaformationStep = () => {
   const {
@@ -15,12 +17,26 @@ const ProductinaformationStep = () => {
   });
 
   return (
-    <div className={styles.formContainer}>
-      <h2 className={styles.formTitle}>Produktinformation</h2>
-      <p className={styles.formSubtitle}>
-        Obligatoriska fält är markerade med stjärna (*)
-      </p>
-      <div
+    <StepperDiv heading={'Produktinformation'}>
+      <div className={styles.formRow}>
+        <Input
+          htmlFor="manufacturer"
+          label="Tillverkare / Leverantör"
+          required={false}
+          type="text"
+          placeholder="T.ex. dörrbyggarna"
+          register={register}
+        />
+        <Input
+          htmlFor="article_number"
+          label="Artikelnummer"
+          required={false}
+          type="text"
+          placeholder="T.ex. 123 456"
+          register={register}
+        />
+      </div>
+      {/* <div
         className={styles.formRow}
         style={{ marginBottom: '40px' }}
       >
@@ -50,9 +66,18 @@ const ProductinaformationStep = () => {
             className={styles.input}
           />
         </div>
-      </div>
+      </div> */}
+
       <div className={styles.formRow}>
-        <div className={styles.formGroup}>
+        <Input
+          htmlFor="manufacture_year"
+          label="Tillverkningsår"
+          required={false}
+          type="text"
+          placeholder="T.ex. 1985"
+          register={register}
+        />
+        {/* <div className={styles.formGroup}>
           <label
             htmlFor="manufacture_year"
             className={styles.label}
@@ -64,9 +89,17 @@ const ProductinaformationStep = () => {
             className={styles.input}
             placeholder="T.ex. 1985"
           ></input>
-        </div>
+        </div> */}
+        <Input
+          htmlFor="purchase_year"
+          label="Inköpsår"
+          required={false}
+          type="text"
+          placeholder="T.ex. 1990"
+          register={register}
+        />
 
-        <div className={styles.formGroup}>
+        {/* <div className={styles.formGroup}>
           <label
             htmlFor="purchase_year"
             className={styles.label}
@@ -78,11 +111,27 @@ const ProductinaformationStep = () => {
             className={styles.input}
             placeholder="T.ex. 1980"
           ></input>
-        </div>
+        </div> */}
       </div>
 
       <div className={styles.formRow}>
-        <div className={styles.formGroup}>
+        <Input
+          htmlFor="GTIN"
+          label="GTIN"
+          required={false}
+          type="text"
+          placeholder="Ange här"
+          register={register}
+        />
+        <Input
+          htmlFor="E_NR"
+          label="E-NR"
+          required={false}
+          type="text"
+          placeholder="Ange här"
+          register={register}
+        />
+        {/* <div className={styles.formGroup}>
           <label
             htmlFor="GTIN"
             className={styles.label}
@@ -108,11 +157,27 @@ const ProductinaformationStep = () => {
             placeholder="Ange här"
             className={styles.input}
           />
-        </div>
+        </div> */}
       </div>
 
       <div className={styles.formRow}>
-        <div className={styles.formGroup}>
+        <Input
+          htmlFor="RSK"
+          label="RSK"
+          required={false}
+          type="text"
+          placeholder="Ange här"
+          register={register}
+        />
+        <Input
+          htmlFor="BK04"
+          label="BK04"
+          required={false}
+          type="text"
+          placeholder="Ange här"
+          register={register}
+        />
+        {/* <div className={styles.formGroup}>
           <label
             htmlFor="RSK"
             className={styles.label}
@@ -124,9 +189,9 @@ const ProductinaformationStep = () => {
             placeholder="Ange här"
             className={styles.input}
           />
-        </div>
+        </div> */}
 
-        <div className={styles.formGroup}>
+        {/* <div className={styles.formGroup}>
           <label
             htmlFor="BK04"
             className={styles.label}
@@ -138,10 +203,18 @@ const ProductinaformationStep = () => {
             placeholder="Ange här"
             className={styles.input}
           />
-        </div>
+        </div> */}
       </div>
+      <Input
+        htmlFor="BSAB"
+        label="BSAB"
+        required={false}
+        type="text"
+        placeholder="Ange här"
+        register={register}
+      />
 
-      <div className={styles.formGroup}>
+      {/* <div className={styles.formGroup}>
         <label
           htmlFor="BSAB"
           className={styles.label}
@@ -153,11 +226,36 @@ const ProductinaformationStep = () => {
           placeholder="Ange här"
           className={styles.input}
         />
-      </div>
+      </div> */}
 
       <div className={styles.fileUploadSection}>
-        <h3>Ladda upp filer</h3>
-        <table className={styles.fileTable}>
+        <label
+          className={styles.label}
+          htmlFor="files"
+        >
+          Ladda upp filer här
+        </label>
+        <div className={styles.fileDiv}>
+          <label
+            className={styles.label}
+            htmlFor="filnamn"
+          >
+            Filnamn
+          </label>
+          <label
+            className={styles.label}
+            htmlFor="typ"
+          >
+            Typ
+          </label>
+          <label
+            className={styles.label}
+            htmlFor="uppladdningsdatum"
+          >
+            Uppladdningsdatum
+          </label>
+        </div>
+        {/* <table className={styles.fileTable}>
           <thead>
             <tr>
               <th></th>
@@ -181,7 +279,7 @@ const ProductinaformationStep = () => {
               </tr>
             ))}
           </tbody>
-        </table>
+        </table> */}
         <div className={styles.fileButtons}>
           <Button
             type="button"
@@ -211,7 +309,7 @@ const ProductinaformationStep = () => {
           </Button>
         </div>
       </div>
-    </div>
+    </StepperDiv>
   );
 };
 
