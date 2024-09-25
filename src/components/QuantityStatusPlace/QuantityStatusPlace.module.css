@@ -10,7 +10,10 @@
   margin: 0 auto;
   padding: 20px;
 }
-input[type='radio'] {
+.dropdownForm {
+  background-color: var(--form-blue);
+}
+.radioContainer > input[type='radio'] {
   display: none;
 }
 .star {
