@@ -44,7 +44,9 @@ const QuantityStatusPlace = () => {
             id={styles.mainRow}
           >
             <div className={styles.formGroup}>
-              <label className={styles.label}>Produkt: {product}</label>
+              <label className={styles.label}>
+                Produkt: <p>{product}</p>
+              </label>
             </div>
             <div className={styles.formGroup}>
               <label
@@ -139,7 +141,10 @@ const QuantityStatusPlace = () => {
                 )}
               />
             </div>
-            <div className={styles.formGroup}>
+            <div
+              className={styles.formGroup}
+              id={styles.iconCenter}
+            >
               <label
                 htmlFor="delete"
                 className={styles.label}
@@ -154,7 +159,10 @@ const QuantityStatusPlace = () => {
                 <FaTrash />
               </Button>
             </div>
-            <div className={styles.formGroup}>
+            <div
+              className={styles.formGroup}
+              id={styles.iconCenter}
+            >
               <label
                 htmlFor="showMore"
                 className={styles.label}

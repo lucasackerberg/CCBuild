@@ -1,17 +1,21 @@
-#mainRow {
-  background-color: #e9ecef;
+#mainRow > .formGroup {
+  padding: 2px 4px !important;
 }
+
 .formContainerSub {
+  background-color: #e9ecef;
+  padding: 0 !important;
   border: 1px solid #ccc;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
 }
 .formContainer {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 .dropdownForm {
   background-color: var(--form-blue);
+  padding: 20px;
 }
 .radioContainer > input[type='radio'] {
   display: none;
@@ -32,7 +36,6 @@
 
 .formGroup {
   padding: 10px;
-  margin-bottom: 20px;
 }
 
 .formGroupInner {
@@ -52,6 +55,7 @@
 .label {
   display: block;
   margin-bottom: 5px;
+  margin-top: 5px;
   font-weight: bold;
 }
 
@@ -61,17 +65,22 @@
   padding: 2px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 12px;
 }
+
 .formSelect {
   width: 100%;
   padding: 2px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 12px;
 }
-
+#iconCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .infoIcon {
   color: #0066cc;
   cursor: help;
