@@ -8,6 +8,7 @@ import QuantityStatusPlace from '../QuantityStatusPlace/QuantityStatusPlace';
 import Marketplace from '../Marketplace/Marketplace';
 import { Button } from 'react-bootstrap';
 import supabase from '../../supabaseClient';
+import { useParams } from 'react-router-dom';
 
 const steps = [
   '1. Generell information',
@@ -19,7 +20,8 @@ const steps = [
 
 const StepperForm = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const methods = useForm();
+  const { id } = useParams();
+  const methods = useForm({ defaultValues: { project_id: id } });
   const {
     register,
     handleSubmit,
