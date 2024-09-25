@@ -9,6 +9,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 export const CreateProject = () => {
   const { profile } = useUser();
   const [showForm, setShowForm] = useState(false);
+  const [skapaNyttProjekt, setSkapaNyttProjekt] = useState(true);
   const [formData, setFormData] = useState({
     name: '',
     country: '',
@@ -52,6 +53,7 @@ export const CreateProject = () => {
   // Show form when button is clicked
   const showAddForm = () => {
     setShowForm(true);
+    setSkapaNyttProjekt(false);
   };
 
   const dontShowForm = () => {
@@ -59,11 +61,12 @@ export const CreateProject = () => {
   };
 
   return (
-    <div>
+  <div>
+    {skapaNyttProjekt && (
       <Button onClick={showAddForm} variant="primary" className={styles.submitButton}>
         Skapa Nytt Projekt
       </Button>
-
+      )}
       {showForm && (
         <Form className={styles.formContainer}>
           <h1 className={styles.formTitle}>Skapa nytt projekt</h1>
@@ -372,7 +375,10 @@ export const CreateProject = () => {
           </Row>
 
           <div className={styles.buttonContainer}>
-            <Button onClick={dontShowForm} variant="secondary" className={styles.cancelButton}>
+            <Button onClick={() => {
+                      dontShowForm();
+                      setSkapaNyttProjekt(true);
+                    }} variant="secondary" className={styles.cancelButton}>
               Avbryt
             </Button>
             <Button onClick={handleSubmit} variant="primary" className={styles.submitButton}>

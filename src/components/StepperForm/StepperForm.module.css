@@ -14,18 +14,51 @@
 
 .stepper {
   display: flex;
-  justify-content: space-between;
+  gap: 17px;
   margin-bottom: 20px;
 }
 
 .step {
   font-size: 14px;
   color: #666;
+  position: relative;
 }
 
 .step.active {
-  color: #0066cc;
+  color: #000000;
   font-weight: bold;
+}
+
+.before{
+  color: #adb5bd;
+}
+
+.passed {
+  color: #adb5bd;
+}
+
+.passed::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  width: 105%;
+  height: 2px;
+  background-color: #198754;
+  border-radius: 2px;
+}
+
+.before::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  width: 105%;
+  height: 2px;
+  background-color: #adb5bd;
+  border-radius: 2px;
 }
 
 .form_select,

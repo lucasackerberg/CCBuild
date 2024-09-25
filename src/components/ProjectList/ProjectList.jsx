@@ -19,7 +19,7 @@ export const ProjectList = () => {
           className={styles.project_container}
         >
           <div>
-            {project.name}
+            <h2>{project.name}</h2>
             {/* Om projektet inte har produkter sp ska detta inte visas antagligen? */}
             <ProductList
               products={products}
