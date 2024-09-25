@@ -95,7 +95,7 @@ export const UserProvider = ({ children }) => {
         console.error('Error fetching subcategories:', err.message);
       }
     };
-
+    
 const fetchProductTypesForSubcategories = async (subcategories) => {
   const subcategoryIds = subcategories.map(subcategory => subcategory.id);
   try {

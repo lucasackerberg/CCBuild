@@ -15,9 +15,9 @@ export default function ProjectComponent() {
     <div>
       {profile ? (
         <>
-          <h1>Alla projekt</h1>
           <CreateProject />
-
+          <br />
+          <h1>Alla projekt</h1>
           <ProjectList />
         </>
       ) : (
