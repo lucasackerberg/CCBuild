@@ -173,7 +173,7 @@ const QuantityStatusPlace = () => {
           </div>
         </div>
         {showAdditionalInfo && (
-          <div>
+          <div className={styles.dropdownForm}>
             <div className={styles.formRow}>
               <div className={styles.formGroup}>
                 <div className={styles.formGroup}>
@@ -185,7 +185,10 @@ const QuantityStatusPlace = () => {
                     {[...Array(5)].map((star, i) => {
                       const aestheticConditionValue = i + 1;
                       return (
-                        <label key={i}>
+                        <label
+                          className={styles.radioContainer}
+                          key={i}
+                        >
                           <input
                             type="radio"
                             name="aesthetic_condition"
@@ -215,7 +218,10 @@ const QuantityStatusPlace = () => {
                     {[...Array(5)].map((star, i) => {
                       const functionalConditionValue = i + 1;
                       return (
-                        <label key={i}>
+                        <label
+                          className={styles.radioContainer}
+                          key={i}
+                        >
                           <input
                             type="radio"
                             name="functional_condition"
@@ -238,7 +244,10 @@ const QuantityStatusPlace = () => {
                 </div>
               </div>
 
-              <div className={styles.formGroup}>
+              <div
+                className={styles.formGroup}
+                style={{ height: '100%' }}
+              >
                 <label
                   htmlFor="comment"
                   className={styles.label}
