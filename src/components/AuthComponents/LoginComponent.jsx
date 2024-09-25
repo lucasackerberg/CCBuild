@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import supabase from '../../supabaseClient';
+import { useUser } from '../../contexts/UserContext';
 
 export default function LoginComponent() {
   const [email, setEmail] = useState('');
@@ -8,6 +9,7 @@ export default function LoginComponent() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const user = useUser();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -27,6 +29,12 @@ export default function LoginComponent() {
       navigate('/dashboard');
     }
   };
+
+  useEffect(() => {
+    if (user.user) {
+      navigate('/dashboard');
+    }
+  }, [user]);
 
   return (
     <div>
