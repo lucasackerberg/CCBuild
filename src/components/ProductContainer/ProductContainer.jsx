@@ -4,6 +4,7 @@ import ProductList from '../ProductList/ProductList';
 import { useUser } from '../../contexts/UserContext';
 import StepperForm from '../StepperForm/StepperForm';
 import { set } from 'react-hook-form';
+import { Button } from 'react-bootstrap';
 
 const ProductContainer = () => {
   const { id } = useParams();
@@ -15,9 +16,8 @@ const ProductContainer = () => {
   };
   return (
     <div>
-      <h1>{showStepperForm ? 'Skapa produkt' : 'Projekt detaljer'}</h1>
       {!showStepperForm && (
-        <button onClick={handleButtonClick}>Lägg till produkt</button>
+        <Button onClick={handleButtonClick}>Lägg till produkt</Button>
       )}
       {showStepperForm && <StepperForm />}
       {!showStepperForm && (

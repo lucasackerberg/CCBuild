@@ -203,7 +203,9 @@ const StepperForm = () => {
               key={index}
               className={`${styles.step} ${
                 index === currentStep ? styles.active : ''
-              }`}
+              } ${currentStep > index ? styles.passed : ''}
+                ${currentStep < index ? styles.before : ''}
+              `}
             >
               {step}
             </div>

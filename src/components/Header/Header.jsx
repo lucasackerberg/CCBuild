@@ -1,11 +1,12 @@
 import styles from './Header.module.css';
+import logo from '../../../src/assets/logo.webp';
 
 export const Header = () => {
   return (
     <section>
       <img
         className={styles.logo}
-        src="logo.webp"
+        src={logo}
         alt="ccbuild logo"
       />
       <div className={styles.menu}>
