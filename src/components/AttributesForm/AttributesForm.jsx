@@ -63,33 +63,35 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
             key={attributeName}
             className={styles.formGroup}
           >
-            <h3 className={styles.attributeTitle}>{attributeName}</h3>
-
-            {groupedAttributes[attributeName].map((attribute, index) => (
-              <div
-                key={attribute.id}
-                className={styles.radioGroup}
-              >
-                <input
-                  type="radio"
-                  id={`attribute_${attribute.id}`} // Unique ID for accessibility
-                  value={attribute.id} // Set the value for the radio button
-                  {...register(`attributes.${groupIndex}.value`, {
-                    required: true,
-                  })} // Register the field array item
-                  className={styles.radioInput}
-                />
-                <label
-                  htmlFor={`attribute_${attribute.id}`}
-                  className={styles.radioLabel}
+            <label className={styles.label}>{attributeName}</label>
+            <div className={styles.formRow}>
+              {groupedAttributes[attributeName].map((attribute, index) => (
+                <div
+                  key={attribute.id}
+                  className={styles.radioGroup}
                 >
-                  {attribute.value} {/* Display the attribute value */}
-                </label>
-              </div>
-            ))}
+                  <input
+                    type="radio"
+                    id={`attribute_${attribute.id}`} // Unique ID for accessibility
+                    value={attribute.id} // Set the value for the radio button
+                    {...register(`attributes.${groupIndex}.value`, {
+                      required: true,
+                    })} // Register the field array item
+                    className={styles.radioInput}
+                  />
+                  <label
+                    htmlFor={`attribute_${attribute.id}`}
+                    className={styles.radioLabel}
+                  >
+                    {attribute.value} {/* Display the attribute value */}
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
+      <hr className={styles.divider} />
       <div>
         <h2 className={styles.formTitle}>Form</h2>
         <p className={styles.formSubtitle}>

@@ -2,13 +2,18 @@
   max-width: 800px;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  padding: 20px;
 }
 
 .formTitle {
   font-size: 24px;
   margin-bottom: 10px;
+}
+.divider {
+  border: 0;
+  height: 1px;
+  background: #ccc; /* Grey color */
+  margin: 20px 0; /* Adjust spacing as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
 }
 
 .formSubtitle {
@@ -37,6 +42,13 @@
 
 .formRow .formGroup {
   flex: 1;
+}
+
+.radioGroup {
+  padding: 4px;
+}
+.radioGroup > label {
+  margin-left: 4px;
 }
 
 .label {
