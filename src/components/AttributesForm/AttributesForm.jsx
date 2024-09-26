@@ -53,9 +53,7 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
   }, [categoryId, subcategoryId, typeId, fetchAttributes]);
 
   // Log productAttributes when it changes
-  useEffect(() => {
-    console.log('Product Attributes:', productAttributes);
-  }, [productAttributes]);
+  useEffect(() => {}, [productAttributes]);
 
   // Group attributes by name
   const groupedAttributes = productAttributes.reduce((acc, attribute) => {

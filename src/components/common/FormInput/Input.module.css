@@ -1,6 +1,6 @@
 .textInput {
   width: 312px;
-  height: auto;
+  height: 34px;
   border-radius: 3.2px;
   border: 1px solid #ced4da;
   background: #fff;
@@ -9,7 +9,7 @@
 
 .selectInput {
   width: 312px;
-  height: auto;
+  height: 34px;
   border-radius: 3.2px;
   border: 1px solid#ced4da;
   background: #fff;
@@ -35,7 +35,7 @@
 
 .smallText {
   width: 128px;
-  height: auto;
+  height: 34px;
   border-radius: 3.2px;
   border: 1px solid #ced4da;
   background: #fff;
@@ -44,7 +44,7 @@
 
 .smallSelect {
   width: 128px;
-  height: auto;
+  height: 34px;
   border-radius: 3.2px;
   border: 1px solid#ced4da;
   background: #fff;

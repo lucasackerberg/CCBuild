@@ -7,6 +7,11 @@
 .card_header {
   padding: 20px;
   border-bottom: 1px solid #e0e0e0;
+  font-family: 'Helvetica Neue';
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
 }
 
 .card_content {
@@ -27,7 +32,6 @@
 
 .step.active {
   color: #000000;
-  font-weight: bold;
 }
 
 .before {
@@ -45,7 +49,7 @@
   left: 0;
   right: 0;
   width: 105%;
-  height: 2px;
+  height: 1px;
   background-color: #198754;
   border-radius: 2px;
 }
@@ -57,7 +61,7 @@
   left: 0;
   right: 0;
   width: 105%;
-  height: 2px;
+  height: 1px;
   background-color: #adb5bd;
   border-radius: 2px;
 }

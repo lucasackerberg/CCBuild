@@ -31,7 +31,7 @@ const GeneralData = () => {
   useEffect(() => {
     if (selectedSubcategory) {
       const types = productTypes[selectedSubcategory] || [];
-      console.log('Filtered Product Types:', types);
+
       setFilteredProductTypes(types);
     } else {
       setFilteredProductTypes([]);
