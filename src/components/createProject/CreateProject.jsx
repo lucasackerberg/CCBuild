@@ -110,6 +110,7 @@ export const CreateProject = () => {
                   onChange={handleChange}
                 >
                   <option value="EU">EU</option>
+                  <option value="US">US</option>
                 </Form.Select>
               </Form.Group>
             </Col>
@@ -120,12 +121,16 @@ export const CreateProject = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Valuta</Form.Label>
                 <Form.Control
-                  type="text"
+                  as="select" // Change to 'select' for a dropdown
                   name="currency"
                   value={formData.currency}
                   onChange={handleChange}
-                  readOnly
-                />
+                >
+                  <option value="">Välj valuta</option> {/* Optional placeholder option */}
+                  <option value="DKK">DKK</option>
+                  <option value="SEK">SEK</option>
+                  <option value="EURO">EURO</option>
+                </Form.Control>
               </Form.Group>
             </Col>
           </Row>
