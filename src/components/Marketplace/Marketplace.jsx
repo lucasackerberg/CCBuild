@@ -10,94 +10,94 @@ const Marketplace = () => {
 
   return (
     <div>
-      <StepperDiv heading={'Hantering för marknadsplats'}>
-        <div className={styles.formRow}>
-          <div className={styles.formGroup}>
+      <StepperDiv heading={'Hantering för marknadsplats'}></StepperDiv>
+      <div className={styles.formRow}>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="comment"
+            className={styles.label}
+          >
+            Kommentar
+          </label>
+          <textarea
+            className={styles.select}
+            name="comment"
+            {...register('comment')}
+            placeholder="..."
+          ></textarea>
+        </div>
+        <div className={styles.formGroupPrice}>
+          <div>
             <label
-              htmlFor="comment"
+              htmlFor="price"
               className={styles.label}
             >
-              Kommentar
+              Uppskattat externt pris
             </label>
-            <textarea
-              className={styles.select}
-              name="comment"
-              {...register('comment')}
-              placeholder="..."
-            ></textarea>
-          </div>
-          <div className={styles.formGroupPrice}>
-            <div>
-              <label
-                htmlFor="price"
-                className={styles.label}
-              >
-                Uppskattat externt pris
-              </label>
 
-              <p className={styles.formSubtitle}>Försäljningspris (ex moms)</p>
-              <div className={styles.priceButton}>
-                <input
-                  placeholder="899:-"
-                  name="price"
-                  className={styles.input}
-                  disabled
-                ></input>
-                <Button
-                  className={styles.pricebtn}
-                  size="sm"
-                >
-                  Ändra pris
-                </Button>
-              </div>
+            <p className={styles.formSubtitle}>Försäljningspris (ex moms)</p>
+            <div className={styles.priceButton}>
+              <input
+                placeholder="899:-"
+                name="price"
+                className={styles.input}
+                disabled
+              ></input>
+              <Button
+                className={styles.pricebtn}
+                size="sm"
+              >
+                Ändra pris
+              </Button>
             </div>
-            <div
-              className={styles.formGroup}
-              id={styles.alignCheckbox}
+          </div>
+          <div
+            className={styles.formGroup}
+            id={styles.alignCheckbox}
+          >
+            <div className={styles.priceButton}>
+              <FormCheck name="checkboxPrice" />
+              <label
+                className={styles.label}
+                htmlFor="checkboxPrice"
+              >
+                Låt köparen stå för pris
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className={styles.formRow}>
+        <div className={styles.formGroup}>
+          <div className={styles.priceButton}>
+            <FormCheck name="send_option" />
+            <label
+              className={styles.label}
+              htmlFor="send_option"
             >
-              <div className={styles.priceButton}>
-                <FormCheck name="checkboxPrice" />
-                <label
-                  className={styles.label}
-                  htmlFor="checkboxPrice"
-                >
-                  Låt köparen stå för pris
-                </label>
-              </div>
-            </div>
+              Kan skickas med frakt
+            </label>
+          </div>
+          <div className={styles.priceButton}>
+            <FormCheck name="pickup_option" />
+            <label
+              className={styles.label}
+              htmlFor="pickup_option"
+            >
+              Kan hämtas på plats
+            </label>
           </div>
         </div>
-        <div className={styles.formRow}>
-          <div className={styles.formGroup}>
-            <div className={styles.priceButton}>
-              <FormCheck name="send_option" />
-              <label
-                className={styles.label}
-                htmlFor="send_option"
-              >
-                Kan skickas med frakt
-              </label>
-            </div>
-            <div className={styles.priceButton}>
-              <FormCheck name="pickup_option" />
-              <label
-                className={styles.label}
-                htmlFor="pickup_option"
-              >
-                Kan hämtas på plats
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className={styles.formRow}>
-          <Input
-            htmlFor="address"
-            label="Adress"
-            type="text"
-            placeholder="Lärdomsgatan 3"
-            register={register}
-          />
-          {/* <div className={styles.formGroup}>
+      </div>
+      <div className={styles.formRow}>
+        <Input
+          htmlFor="address"
+          label="Adress"
+          type="text"
+          placeholder="Lärdomsgatan 3"
+          register={register}
+        />
+        {/* <div className={styles.formGroup}>
             <label
               className={styles.label}
               htmlFor="address"
@@ -111,14 +111,14 @@ const Marketplace = () => {
               className={styles.input}
             />{' '}
           </div> */}
-          <Input
-            htmlFor="postal_code"
-            label="Postkod"
-            type="text"
-            placeholder="400 12"
-            register={register}
-          />
-          {/* <div className={styles.formGroup}>
+        <Input
+          htmlFor="postal_code"
+          label="Postkod"
+          type="text"
+          placeholder="400 12"
+          register={register}
+        />
+        {/* <div className={styles.formGroup}>
             <label
               className={styles.label}
               htmlFor="postal_code"
@@ -132,14 +132,14 @@ const Marketplace = () => {
               className={styles.input}
             />{' '}
           </div> */}
-          <Input
-            htmlFor="city"
-            label="Ort"
-            type="text"
-            placeholder="Göteborg"
-            register={register}
-          />
-          {/* <div className={styles.formGroup}>
+        <Input
+          htmlFor="city"
+          label="Ort"
+          type="text"
+          placeholder="Göteborg"
+          register={register}
+        />
+        {/* <div className={styles.formGroup}>
             <label
               className={styles.label}
               htmlFor="city"
@@ -153,16 +153,16 @@ const Marketplace = () => {
               className={styles.input}
             />{' '}
           </div> */}
-        </div>
-        <div className={styles.formRow}>
-          <Input
-            htmlFor="contact_person"
-            label="Kontaktperson"
-            type="text"
-            placeholder="Göteborg"
-            register={register}
-          />
-          {/* <div className={styles.formGroup}>
+      </div>
+      <div className={styles.formRow}>
+        <Input
+          htmlFor="contact_person"
+          label="Kontaktperson"
+          type="text"
+          placeholder="Göteborg"
+          register={register}
+        />
+        {/* <div className={styles.formGroup}>
             <label
               htmlFor="contact_person"
               className={styles.label}
@@ -178,10 +178,9 @@ const Marketplace = () => {
               <option value="">Jag</option>
             </select>
           </div> */}
-          <div className={styles.formGroup}></div>
-          <div className={styles.formGroup}></div>
-        </div>
-      </StepperDiv>
+        <div className={styles.formGroup}></div>
+        <div className={styles.formGroup}></div>
+      </div>
     </div>
   );
 };
