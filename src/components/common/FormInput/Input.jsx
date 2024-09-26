@@ -13,7 +13,11 @@ export const Input = ({
   disabled,
   tooltip,
   tooltipText,
+  small,
 }) => {
+  const textClass = small ? styles.smallText : styles.textInput;
+  const selectClass = small ? styles.smallSelect : styles.selectInput;
+
   return (
     <div>
       <label
@@ -27,7 +31,7 @@ export const Input = ({
       {type === 'text' && (
         <input
           {...register(htmlFor, { required })}
-          className={styles.textInput}
+          className={textClass}
           type="text"
           id={htmlFor}
           required={required}
@@ -39,11 +43,12 @@ export const Input = ({
       {type === 'select' && (
         <select
           {...register(htmlFor, { required })}
-          className={styles.selectInput}
+          className={selectClass}
           onChange={onChange}
           required={required}
           defaultValue={placeholder}
           disabled={disabled}
+          id={htmlFor}
         >
           <option
             disabled

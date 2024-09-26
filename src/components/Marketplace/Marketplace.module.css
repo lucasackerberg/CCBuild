@@ -26,10 +26,15 @@
 .formSubtitle {
   font-size: 14px;
   color: #666;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 .formGroup {
+  margin-bottom: 20px;
+}
+.formGroupPrice {
+  display: flex;
+  gap: 50px;
   margin-bottom: 20px;
 }
 
@@ -45,16 +50,22 @@
 
 .label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   font-weight: bold;
 }
 
 .input,
 .select {
-  width: 100%;
+  /* width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 14px; */
+  width: 312px;
+  height: 34px;
+  border-radius: 3.2px;
+  border: 1px solid #ced4da;
+  background: #fff;
+  padding: 4px 12px 4px 8px;
 }
 
 .infoIcon {

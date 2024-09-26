@@ -1,6 +1,6 @@
 .textInput {
   width: 312px;
-  height: auto;
+  height: 34px;
   border-radius: 3.2px;
   border: 1px solid #ced4da;
   background: #fff;
@@ -9,7 +9,7 @@
 
 .selectInput {
   width: 312px;
-  height: auto;
+  height: 34px;
   border-radius: 3.2px;
   border: 1px solid#ced4da;
   background: #fff;
@@ -31,4 +31,28 @@
 .required {
   color: #dc3545;
   margin-left: 2px;
+}
+
+.smallText {
+  width: 128px;
+  height: 34px;
+  border-radius: 3.2px;
+  border: 1px solid #ced4da;
+  background: #fff;
+  padding: 4px 12px 4px 8px;
+}
+
+.smallSelect {
+  width: 128px;
+  height: 34px;
+  border-radius: 3.2px;
+  border: 1px solid#ced4da;
+  background: #fff;
+  padding: 4px 12px 4px 8px;
+  border-radius: 3.2px;
+  border: 1px solid #ced4da;
+  background: #fff;
+  &:disabled {
+    background-color: #e9ecef;
+  }
 }

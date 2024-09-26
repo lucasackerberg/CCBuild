@@ -221,11 +221,11 @@ const StepperForm = () => {
             <div className={styles.button_group}>
               <Button
                 type="button"
-                variant="outline-primary"
+                className={styles.btn_outline}
                 onClick={prevStep}
                 disabled={currentStep === 0}
               >
-                Spara utkast
+                Tillbaka
               </Button>
               <Button
                 type="button"
@@ -239,7 +239,7 @@ const StepperForm = () => {
                 type="submit"
                 className={`${styles.btn} ${styles.primary}`}
               >
-                Submit
+                Spara
               </Button>
             </div>
           </form>
