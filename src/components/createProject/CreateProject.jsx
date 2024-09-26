@@ -49,7 +49,7 @@ export const CreateProject = () => {
     event.preventDefault();
     await addProject(formData);
   };
-  
+
   // Show form when button is clicked
   const showAddForm = () => {
     setShowForm(true);
@@ -61,17 +61,22 @@ export const CreateProject = () => {
   };
 
   return (
-  <div>
-    {skapaNyttProjekt && (
-      <Button onClick={showAddForm} variant="primary" className={styles.submitButton}>
-        Skapa Nytt Projekt
-      </Button>
+    <div>
+      {skapaNyttProjekt && (
+        <Button
+          onClick={showAddForm}
+          className={styles.submitButton}
+        >
+          Skapa Nytt Projekt
+        </Button>
       )}
       {showForm && (
         <Form className={styles.formContainer}>
           <h1 className={styles.formTitle}>Skapa nytt projekt</h1>
           <br />
-          <p className={styles.formSubtitle}>Obligatoriska fält är markerade med stjärna (*)</p>
+          <p className={styles.formSubtitle}>
+            Obligatoriska fält är markerade med stjärna (*)
+          </p>
           <br />
           <Row>
             <Col md={6}>
@@ -80,7 +85,7 @@ export const CreateProject = () => {
                 <Form.Control
                   type="text"
                   name="name"
-                  placeholder='T. ex. Idrottshallen'
+                  placeholder="T. ex. Idrottshallen"
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -126,7 +131,8 @@ export const CreateProject = () => {
                   value={formData.currency}
                   onChange={handleChange}
                 >
-                  <option value="">Välj valuta</option> {/* Optional placeholder option */}
+                  <option value="">Välj valuta</option>{' '}
+                  {/* Optional placeholder option */}
                   <option value="DKK">DKK</option>
                   <option value="SEK">SEK</option>
                   <option value="EURO">EURO</option>
@@ -139,7 +145,7 @@ export const CreateProject = () => {
             <Form.Label>Projektbeskrivning *</Form.Label>
             <Form.Control
               as="textarea"
-              placeholder='Kommentar'
+              placeholder="Kommentar"
               rows={3}
               name="description"
               value={formData.description}
@@ -154,7 +160,7 @@ export const CreateProject = () => {
                 <Form.Label>Eget projektnummer</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder='T. ex. 123 456 789'
+                  placeholder="T. ex. 123 456 789"
                   name="custom_project_id"
                   value={formData.custom_project_id}
                   onChange={handleChange}
@@ -179,7 +185,9 @@ export const CreateProject = () => {
           <br />
           <h2 className={styles.sectionTitle}>Platsbenämningar</h2>
           <br />
-          <p className={styles.sectionSubtitle}>Obligatoriska fält är markerade med stjärna (*)</p>
+          <p className={styles.sectionSubtitle}>
+            Obligatoriska fält är markerade med stjärna (*)
+          </p>
           <br />
           <Row>
             <Col md={6}>
@@ -187,7 +195,7 @@ export const CreateProject = () => {
                 <Form.Label>Platsbenämning #1</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder='T ex. fastighet'
+                  placeholder="T ex. fastighet"
                   name="platsbenämning1"
                   value={formData.platsbenämning1}
                   onChange={handleChange}
@@ -198,7 +206,7 @@ export const CreateProject = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Platsbenämning #2</Form.Label>
                 <Form.Control
-                  placeholder='T ex. våning'
+                  placeholder="T ex. våning"
                   type="text"
                   name="platsbenämning2"
                   value={formData.platsbenämning2}
@@ -213,7 +221,7 @@ export const CreateProject = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Platsbenämning #3</Form.Label>
                 <Form.Control
-                  placeholder='T ex. rum'
+                  placeholder="T ex. rum"
                   type="text"
                   name="platsbenämning3"
                   value={formData.platsbenämning3}
@@ -225,7 +233,7 @@ export const CreateProject = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Platsbenämning #4</Form.Label>
                 <Form.Control
-                  placeholder='T ex. hylla' 
+                  placeholder="T ex. hylla"
                   type="text"
                   name="platsbenämning4"
                   value={formData.platsbenämning4}
@@ -239,14 +247,16 @@ export const CreateProject = () => {
           <br />
           <h2 className={styles.sectionTitle}>Beslutsbenämning</h2>
           <br />
-          <p className={styles.sectionSubtitle}>Obligatoriska fält är markerade med stjärna (*)</p>
+          <p className={styles.sectionSubtitle}>
+            Obligatoriska fält är markerade med stjärna (*)
+          </p>
           <br />
           <Row>
             <Col md={6}>
               <Form.Group className="mb-3">
                 <Form.Label>Beslutsbenämning</Form.Label>
                 <Form.Control
-                  placeholder='Ange beslut avseende hantering'
+                  placeholder="Ange beslut avseende hantering"
                   type="text"
                   name="beslutsbenämning1"
                   value={formData.beslutsbenämning1}
@@ -258,7 +268,7 @@ export const CreateProject = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Beslutsbenämning</Form.Label>
                 <Form.Control
-                  placeholder='Ange beslut avseende hantering'
+                  placeholder="Ange beslut avseende hantering"
                   type="text"
                   name="beslutsbenämning2"
                   value={formData.beslutsbenämning2}
@@ -273,7 +283,7 @@ export const CreateProject = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Beslutsbenämning</Form.Label>
                 <Form.Control
-                  placeholder='Ange beslut avseende hantering'
+                  placeholder="Ange beslut avseende hantering"
                   type="text"
                   name="beslutsbenämning3"
                   value={formData.beslutsbenämning3}
@@ -285,7 +295,7 @@ export const CreateProject = () => {
               <Form.Group className="mb-3">
                 <Form.Label>Beslutsbenämning</Form.Label>
                 <Form.Control
-                  placeholder='Ange beslut avseende hantering' 
+                  placeholder="Ange beslut avseende hantering"
                   type="text"
                   name="beslutsbenämning4"
                   value={formData.beslutsbenämning4}
@@ -299,11 +309,13 @@ export const CreateProject = () => {
           <br />
           <h2 className={styles.sectionTitle}>Datum</h2>
           <br />
-          <p className={styles.sectionSubtitle}>Obligatoriska fält är markerade med stjärna (*)</p>
+          <p className={styles.sectionSubtitle}>
+            Obligatoriska fält är markerade med stjärna (*)
+          </p>
           <br />
           <Row>
             <Col md={4}>
-              <Form.Group className={`mb-3 ${styles.dateflex}`}>  
+              <Form.Group className={`mb-3 ${styles.dateflex}`}>
                 <Form.Label>Startdatum</Form.Label>
                 <DatePicker
                   selected={formData.startDate}
@@ -315,7 +327,7 @@ export const CreateProject = () => {
               </Form.Group>
             </Col>
             <Col md={4}>
-              <Form.Group className={`mb-3 ${styles.dateflex}`}>  
+              <Form.Group className={`mb-3 ${styles.dateflex}`}>
                 <Form.Label>Slutdatum</Form.Label>
                 <DatePicker
                   selected={formData.endDate}
@@ -327,7 +339,7 @@ export const CreateProject = () => {
               </Form.Group>
             </Col>
             <Col md={4}>
-              <Form.Group className={`mb-3 ${styles.dateflex}`}>  
+              <Form.Group className={`mb-3 ${styles.dateflex}`}>
                 <Form.Label>Första åtkomstdatum</Form.Label>
                 <DatePicker
                   selected={formData.accessStartDate}
@@ -342,7 +354,7 @@ export const CreateProject = () => {
           <br />
           <Row>
             <Col md={4}>
-              <Form.Group className={`mb-3 ${styles.dateflex}`}>  
+              <Form.Group className={`mb-3 ${styles.dateflex}`}>
                 <Form.Label>Sista åtkomstdatum</Form.Label>
                 <DatePicker
                   selected={formData.accessEndDate}
@@ -354,11 +366,13 @@ export const CreateProject = () => {
               </Form.Group>
             </Col>
             <Col md={4}>
-              <Form.Group className={`mb-3 ${styles.dateflex}`}>  
+              <Form.Group className={`mb-3 ${styles.dateflex}`}>
                 <Form.Label>Första möjliga leveransdatum</Form.Label>
                 <DatePicker
                   selected={formData.deliveryStartDate}
-                  onChange={(date) => handleDateChange(date, 'deliveryStartDate')}
+                  onChange={(date) =>
+                    handleDateChange(date, 'deliveryStartDate')
+                  }
                   dateFormat="yyyy-MM-dd"
                   className="form-control"
                   placeholderText="Välj första leveransdatum"
@@ -366,7 +380,7 @@ export const CreateProject = () => {
               </Form.Group>
             </Col>
             <Col md={4}>
-              <Form.Group className={`mb-3 ${styles.dateflex}`}>  
+              <Form.Group className={`mb-3 ${styles.dateflex}`}>
                 <Form.Label>Sista möjliga leveransdatum</Form.Label>
                 <DatePicker
                   selected={formData.deliveryEndDate}
@@ -380,18 +394,26 @@ export const CreateProject = () => {
           </Row>
 
           <div className={styles.buttonContainer}>
-            <Button onClick={() => {
-                      dontShowForm();
-                      setSkapaNyttProjekt(true);
-                    }} variant="secondary" className={styles.cancelButton}>
+            <Button
+              onClick={() => {
+                dontShowForm();
+                setSkapaNyttProjekt(true);
+              }}
+              variant="secondary"
+              className={styles.cancelButton}
+            >
               Avbryt
             </Button>
-            <Button onClick={handleSubmit} variant="primary" className={styles.submitButton}>
+            <Button
+              onClick={handleSubmit}
+              variant="primary"
+              className={styles.submitButton}
+            >
               Skapa projekt
             </Button>
           </div>
         </Form>
-        )}
+      )}
     </div>
   );
 };

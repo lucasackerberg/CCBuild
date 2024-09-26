@@ -10,21 +10,19 @@ export const ProjectList = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
+  console.log(projects);
+
   return (
     <div className={styles.project}>
       {projects.map((project) => (
         <Link
+          style={{ textDecoration: 'none' }}
           key={project.id}
           to={`/projects/${project.id}`}
-          className={styles.project_container}
         >
-          <div>
-            <h2>{project.name}</h2>
-            {/* Om projektet inte har produkter sp ska detta inte visas antagligen? */}
-            {/* <ProductList
-              products={products}
-              projectId={project.id}
-            /> */}
+          <div className={styles.project_container}>
+            <h2 className={styles.title}>{project.name}</h2>
+            <p>{project.country}</p>
           </div>
         </Link>
       ))}

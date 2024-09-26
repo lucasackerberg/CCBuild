@@ -145,6 +145,7 @@ const ProductinaformationStep = () => {
         </div>
         <div className={styles.fileButtons}>
           <Button
+            className={styles.btn_outline}
             type="button"
             variant="outline-primary"
             onClick={() => append({ filename: '', type: '', uploadDate: '' })}
@@ -152,12 +153,14 @@ const ProductinaformationStep = () => {
             Ladda upp ny fil
           </Button>
           <Button
+            className={styles.btn_outline}
             type="button"
             variant="outline-primary"
           >
             Ändra
           </Button>
           <Button
+            className={styles.btn_outline}
             type="button"
             variant="outline-primary"
             onClick={() => {
