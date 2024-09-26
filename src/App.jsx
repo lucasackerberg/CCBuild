@@ -31,7 +31,6 @@ export default function App() {
             path="/"
             element={<LoginComponent />}
           />{' '}
-          {/* Default route or landing page */}
         </Routes>
       </div>
     </UserProvider>
