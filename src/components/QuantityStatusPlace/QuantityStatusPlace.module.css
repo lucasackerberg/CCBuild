@@ -2,6 +2,27 @@
   padding: 2px 4px !important;
 }
 
+.mainRow {
+  display: flex;
+  justify-content: space-around;
+}
+
+.placementContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 10px;
+}
+
+.placementInnerContainer {
+  display: flex;
+  gap: 20px;
+  width: 50%;
+  > div {
+    flex-grow: 1;
+  }
+}
+
 .rowSpecial {
   display: flex;
   gap: 20px;
@@ -15,16 +36,17 @@
 
 .formContainerSub {
   background-color: #e9ecef;
-  padding: 0 !important;
+  /* padding: 0 !important; */
   border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow */
 }
+
 .formContainer {
   max-width: 1200px;
 }
 .dropdownForm {
   background-color: var(--form-blue);
   padding: 20px;
+  border-top: 1px solid #ccc;
 }
 .radioContainer > input[type='radio'] {
   display: none;
@@ -88,6 +110,7 @@
   border-radius: 4px;
   font-size: 14px;
 }
+
 #iconCenter {
   display: flex;
   flex-direction: column;
