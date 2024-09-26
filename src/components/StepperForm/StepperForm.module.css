@@ -96,9 +96,15 @@
 
 .button_group {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 10px;
   margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.button_inner_group {
+  display: flex;
+  gap: 16px;
 }
 
 .btn {

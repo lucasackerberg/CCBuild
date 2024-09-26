@@ -2,6 +2,7 @@ import ProjectComponent from '../ProjectComponent/ProjectComponent';
 import { useUser } from '../../contexts/UserContext';
 import { LogoutComponent } from '../LogoutComponent/LogoutComponent';
 import styles from './WrapperComponent.module.css';
+import ProjectList from '../ProjectList/ProjectList';
 
 export default function WrapperComponent() {
   const { profile, loading } = useUser();
@@ -17,6 +18,8 @@ export default function WrapperComponent() {
   return (
     <div>
       <ProjectComponent />
+      <ProjectList />
+
       <LogoutComponent></LogoutComponent>
     </div>
   );

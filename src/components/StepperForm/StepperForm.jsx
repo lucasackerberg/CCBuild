@@ -225,28 +225,35 @@ const StepperForm = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             {renderStepContent()}
             <div className={styles.button_group}>
-              <Button
-                type="button"
-                className={styles.btn_outline}
-                onClick={prevStep}
-                disabled={currentStep === 0}
-              >
-                Tillbaka
-              </Button>
-              <Button
-                type="button"
-                onClick={nextStep}
-                disabled={currentStep === steps.length - 1}
-                className={`${styles.btn} ${styles.primary}`}
-              >
-                Nästa
-              </Button>
-              <Button
-                type="submit"
-                className={`${styles.btn} ${styles.primary}`}
-              >
-                Spara
-              </Button>
+              {currentStep != 0 && (
+                <Button
+                  type="button"
+                  className={styles.btn_outline}
+                  onClick={prevStep}
+                  disabled={currentStep === 0}
+                >
+                  Tillbaka
+                </Button>
+              )}
+              <div></div>
+              <div className={styles.button_inner_group}>
+                {currentStep < 4 && (
+                  <Button
+                    type="button"
+                    onClick={nextStep}
+                    disabled={currentStep === steps.length - 1}
+                    className={`${styles.btn} ${styles.primary}`}
+                  >
+                    Nästa
+                  </Button>
+                )}
+                <Button
+                  type="submit"
+                  className={`${styles.btn} ${styles.primary}`}
+                >
+                  Spara
+                </Button>
+              </div>
             </div>
           </form>
         </FormProvider>

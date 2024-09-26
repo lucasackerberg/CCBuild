@@ -104,7 +104,7 @@ const GeneralData = ({ setSelectedProductTypeName }) => {
         register={register}
       />
 
-      <div className={styles.formGroup}>
+      <div>
         <label
           htmlFor="produktbilder"
           className={styles.label}

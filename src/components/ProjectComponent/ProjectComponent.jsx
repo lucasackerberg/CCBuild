@@ -17,7 +17,7 @@ export default function ProjectComponent() {
         <>
           <CreateProject />
           <br />
-          <ProjectList />
+          {/* <ProjectList /> */}
         </>
       ) : (
         <AddUserInfo />

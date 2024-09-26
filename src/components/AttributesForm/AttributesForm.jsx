@@ -63,42 +63,41 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
 
   return (
     <div>
-      <StepperDiv heading={'Egenskaper'}>
-        {Object.keys(groupedAttributes).map((attributeName, groupIndex) => (
-          <div
-            key={attributeName}
-            className={styles.formGroup}
-          >
-            <label className={styles.label}>
-              {attributeName.charAt(0).toUpperCase() + attributeName.slice(1)}
-            </label>
-            <div className={styles.formRow}>
-              {groupedAttributes[attributeName].map((attribute, index) => (
-                <div
-                  key={attribute.id}
-                  className={styles.radioGroup}
+      <StepperDiv heading={'Egenskaper'}></StepperDiv>
+      {Object.keys(groupedAttributes).map((attributeName, groupIndex) => (
+        <div
+          key={attributeName}
+          className={styles.formGroup}
+        >
+          <label className={styles.label}>
+            {attributeName.charAt(0).toUpperCase() + attributeName.slice(1)}
+          </label>
+          <div className={styles.formRow}>
+            {groupedAttributes[attributeName].map((attribute, index) => (
+              <div
+                key={attribute.id}
+                className={styles.radioGroup}
+              >
+                <input
+                  type="radio"
+                  id={`attribute_${attribute.id}`} // Unique ID for accessibility
+                  value={attribute.id} // Set the value for the radio button
+                  {...register(`attributes.${groupIndex}.value`, {
+                    required: true,
+                  })} // Register the field array item
+                  className={styles.radioInput}
+                />
+                <label
+                  htmlFor={`attribute_${attribute.id}`}
+                  className={styles.radioLabel}
                 >
-                  <input
-                    type="radio"
-                    id={`attribute_${attribute.id}`} // Unique ID for accessibility
-                    value={attribute.id} // Set the value for the radio button
-                    {...register(`attributes.${groupIndex}.value`, {
-                      required: true,
-                    })} // Register the field array item
-                    className={styles.radioInput}
-                  />
-                  <label
-                    htmlFor={`attribute_${attribute.id}`}
-                    className={styles.radioLabel}
-                  >
-                    {attribute.value}
-                  </label>
-                </div>
-              ))}
-            </div>
+                  {attribute.value}
+                </label>
+              </div>
+            ))}
           </div>
-        ))}
-      </StepperDiv>
+        </div>
+      ))}
 
       <hr className={styles.divider} />
       <StepperDiv heading={'Form'}>
