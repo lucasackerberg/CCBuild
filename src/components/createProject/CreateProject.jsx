@@ -49,6 +49,7 @@ export const CreateProject = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await addProject(formData);
+    setShowForm(false);
   };
 
   // Show form when button is clicked
