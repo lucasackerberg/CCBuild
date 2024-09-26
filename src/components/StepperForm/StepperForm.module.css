@@ -10,7 +10,7 @@
 }
 
 .card_content {
-  padding: 20px;
+  padding: 8px;
 }
 
 .stepper {
@@ -30,7 +30,7 @@
   font-weight: bold;
 }
 
-.before{
+.before {
   color: #adb5bd;
 }
 

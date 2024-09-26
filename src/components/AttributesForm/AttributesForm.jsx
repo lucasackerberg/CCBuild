@@ -3,10 +3,23 @@ import { useFormContext, useFieldArray } from 'react-hook-form';
 import styles from './AttributesForm.module.css';
 import { useUser } from '../../contexts/UserContext';
 import supabase from '../../supabaseClient';
+import { StepperDiv } from '../common/StepperDiv/StepperDiv';
+import { Input } from '../common/FormInput/Input';
 
 const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
   const { register, control } = useFormContext();
   const { productAttributes, setProductAttributes } = useUser();
+
+  const unitsMeasurments = [
+    { id: 1, name: 'mm' },
+    { id: 2, name: 'cm' },
+    { id: 3, name: 'm' },
+  ];
+  const weightMeasurments = [
+    { id: 1, name: 'g' },
+    { id: 2, name: 'kg' },
+    { id: 3, name: 'ton' },
+  ];
 
   const { fields } = useFieldArray({
     control,
@@ -52,18 +65,15 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
 
   return (
     <div>
-      <div className={styles.formContainer}>
-        <h2 className={styles.formTitle}>Egenskaper</h2>
-        <p className={styles.formSubtitle}>
-          Obligatoriska fält är markerade med stjärna (*)
-        </p>
-
+      <StepperDiv heading={'Egenskaper'}>
         {Object.keys(groupedAttributes).map((attributeName, groupIndex) => (
           <div
             key={attributeName}
             className={styles.formGroup}
           >
-            <label className={styles.label}>{attributeName}</label>
+            <label className={styles.label}>
+              {attributeName.charAt(0).toUpperCase() + attributeName.slice(1)}
+            </label>
             <div className={styles.formRow}>
               {groupedAttributes[attributeName].map((attribute, index) => (
                 <div
@@ -83,22 +93,27 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
                     htmlFor={`attribute_${attribute.id}`}
                     className={styles.radioLabel}
                   >
-                    {attribute.value} {/* Display the attribute value */}
+                    {attribute.value}
                   </label>
                 </div>
               ))}
             </div>
           </div>
         ))}
-      </div>
+      </StepperDiv>
+
       <hr className={styles.divider} />
-      <div>
-        <h2 className={styles.formTitle}>Form</h2>
-        <p className={styles.formSubtitle}>
-          Obligatoriska fält är markerade med stjärna (*)
-        </p>
+      <StepperDiv heading={'Form'}>
         <div className={styles.formRow}>
-          <div className={styles.formGroup}>
+          <Input
+            htmlFor="material"
+            label="Material"
+            type="text"
+            placeholder="T.ex. trä"
+            register={register}
+          />
+
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="material"
               className={styles.label}
@@ -110,8 +125,17 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. trä"
               className={styles.input}
             />
-          </div>
-          <div className={styles.formGroup}>
+          </div> */}
+
+          <Input
+            htmlFor="color"
+            label="Färg"
+            type="text"
+            placeholder="T.ex. röd"
+            register={register}
+          />
+
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="color"
               className={styles.label}
@@ -123,10 +147,20 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. röd"
               className={styles.input}
             />
-          </div>
+          </div> */}
         </div>
         <div className={styles.formRow}>
-          <div className={styles.formGroup}>
+          <Input
+            htmlFor="unit_measurement"
+            label="Enhet Mått"
+            type="select"
+            options={unitsMeasurments}
+            placeholder="Välj ..."
+            register={register}
+            small
+          />
+
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="unit_measurement"
               className={styles.label}
@@ -142,8 +176,18 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               <option value="cm">cm</option>
               <option value="m">m</option>
             </select>
-          </div>
-          <div className={styles.formGroup}>
+          </div> */}
+
+          <Input
+            htmlFor="width"
+            label="Bredd"
+            type="text"
+            placeholder="T.ex. 2"
+            register={register}
+            small
+          />
+
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="width"
               className={styles.label}
@@ -155,8 +199,17 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. 2"
               className={styles.input}
             />
-          </div>
-          <div className={styles.formGroup}>
+          </div> */}
+
+          <Input
+            htmlFor="length"
+            label="Längd"
+            type="text"
+            placeholder="T.ex. 2"
+            register={register}
+            small
+          />
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="length"
               className={styles.label}
@@ -168,8 +221,16 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. 2"
               className={styles.input}
             />
-          </div>
-          <div className={styles.formGroup}>
+          </div> */}
+          <Input
+            htmlFor="height"
+            label="Höjd"
+            type="text"
+            placeholder="T.ex. 2"
+            register={register}
+            small
+          />
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="height"
               className={styles.label}
@@ -181,8 +242,16 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. 2"
               className={styles.input}
             />
-          </div>
-          <div className={styles.formGroup}>
+          </div> */}
+          <Input
+            htmlFor="depth"
+            label="Djup"
+            type="text"
+            placeholder="T.ex. 2"
+            register={register}
+            small
+          />
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="depth"
               className={styles.label}
@@ -194,8 +263,16 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. 2"
               className={styles.input}
             />
-          </div>
-          <div className={styles.formGroup}>
+          </div> */}
+          <Input
+            htmlFor="diameter"
+            label="Diameter"
+            type="text"
+            placeholder="T.ex. 2"
+            register={register}
+            small
+          />
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="diameter"
               className={styles.label}
@@ -207,8 +284,16 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. 2"
               className={styles.input}
             />
-          </div>
-          <div className={styles.formGroup}>
+          </div> */}
+          <Input
+            htmlFor="thickness"
+            label="Tjocklek"
+            type="text"
+            placeholder="T.ex. 2"
+            register={register}
+            small
+          />
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="thickness"
               className={styles.label}
@@ -220,10 +305,19 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. 2"
               className={styles.input}
             />
-          </div>
+          </div> */}
         </div>
         <div className={styles.formRow}>
-          <div className={styles.formGroup}>
+          <Input
+            htmlFor="unit_weight"
+            label="Enhet Vikt"
+            type="select"
+            options={unitsMeasurments}
+            placeholder="Välj ..."
+            register={register}
+            small
+          />
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="unit_weight"
               className={styles.label}
@@ -239,8 +333,16 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               <option value="kg">kg</option>
               <option value="ton">ton</option>
             </select>
-          </div>
-          <div className={styles.formGroup}>
+          </div> */}
+          <Input
+            htmlFor="weight"
+            label="Vikt"
+            type="text"
+            placeholder="T.ex. 2"
+            register={register}
+            small
+          />
+          {/* <div className={styles.formGroup}>
             <label
               htmlFor="thickness"
               className={styles.label}
@@ -252,9 +354,9 @@ const AttributesForm = ({ categoryId, subcategoryId, typeId }) => {
               placeholder="T.ex. 2"
               className={styles.input}
             />
-          </div>
+          </div> */}
         </div>
-      </div>
+      </StepperDiv>
     </div>
   );
 };
