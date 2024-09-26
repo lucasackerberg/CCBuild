@@ -6,12 +6,13 @@ import { Button } from 'react-bootstrap';
 import { StepperDiv } from '../common/StepperDiv/StepperDiv';
 import { Input } from '../common/FormInput/Input';
 
-const GeneralData = () => {
+const GeneralData = ({ setSelectedProductTypeName }) => {
   const { register } = useFormContext();
   const { projects, categories, subcategories, productTypes, loading, error } =
     useUser();
 
   const [selectedCategory, setSelectedCategory] = useState('');
+
   const [filteredSubcategories, setFilteredSubcategories] = useState([]);
   const [selectedSubcategory, setSelectedSubcategory] = useState('');
   const [filteredProductTypes, setFilteredProductTypes] = useState([]);
@@ -83,6 +84,14 @@ const GeneralData = () => {
           placeholder="T ex. dubbeldörr slät"
           register={register}
           disabled={!selectedSubcategory}
+          onChange={(e) => {
+            const selectedProductType = filteredProductTypes.find(
+              (item) => item.product_type.id.toString() === e.target.value
+            );
+            setSelectedProductTypeName(
+              selectedProductType ? selectedProductType.product_type.name : ''
+            );
+          }}
         />
       </div>
 
