@@ -2,6 +2,17 @@
   padding: 2px 4px !important;
 }
 
+.rowSpecial {
+  display: flex;
+  gap: 20px;
+}
+
+.rowColumn {
+  display: flex;
+  gap: 40px;
+  padding-bottom: 10px;
+}
+
 .formContainerSub {
   background-color: #e9ecef;
   padding: 0 !important;
@@ -34,6 +45,10 @@
 
 .formGroup {
   padding: 10px;
+}
+
+.formGroupSpecial {
+  padding-left: 10px;
 }
 
 .formGroupInner {

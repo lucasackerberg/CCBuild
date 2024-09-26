@@ -14,9 +14,19 @@ export const Input = ({
   tooltip,
   tooltipText,
   small,
+  long,
+  medium,
 }) => {
-  const textClass = small ? styles.smallText : styles.textInput;
-  const selectClass = small ? styles.smallSelect : styles.selectInput;
+  const textClass = small
+    ? styles.smallText
+    : medium
+    ? styles.mediumText
+    : styles.textInput;
+  const selectClass = small
+    ? styles.smallSelect
+    : long
+    ? styles.longSelect
+    : styles.selectInput;
 
   return (
     <div>
