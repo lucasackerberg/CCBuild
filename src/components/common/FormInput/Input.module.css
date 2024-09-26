@@ -32,3 +32,27 @@
   color: #dc3545;
   margin-left: 2px;
 }
+
+.smallText {
+  width: 128px;
+  height: auto;
+  border-radius: 3.2px;
+  border: 1px solid #ced4da;
+  background: #fff;
+  padding: 4px 12px 4px 8px;
+}
+
+.smallSelect {
+  width: 128px;
+  height: auto;
+  border-radius: 3.2px;
+  border: 1px solid#ced4da;
+  background: #fff;
+  padding: 4px 12px 4px 8px;
+  border-radius: 3.2px;
+  border: 1px solid #ced4da;
+  background: #fff;
+  &:disabled {
+    background-color: #e9ecef;
+  }
+}
