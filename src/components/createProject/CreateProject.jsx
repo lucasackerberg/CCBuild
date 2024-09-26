@@ -68,7 +68,7 @@ export const CreateProject = () => {
           onClick={showAddForm}
           className={styles.submitButton}
         >
-          Skapa Nytt Projekt
+          Skapa nytt projekt
         </Button>
       )}
       {showForm && (
