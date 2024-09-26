@@ -56,10 +56,16 @@
 
 .input,
 .select {
-  width: 100%;
+  /* width: 100%;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 14px;
+  font-size: 14px; */
+  width: 312px;
+  height: 34px;
+  border-radius: 3.2px;
+  border: 1px solid #ced4da;
+  background: #fff;
+  padding: 4px 12px 4px 8px;
 }
 
 .infoIcon {

@@ -3,6 +3,7 @@ import styles from './Marketplace.module.css';
 import { Button, FormCheck } from 'react-bootstrap';
 import { StepperDiv } from '../common/StepperDiv/StepperDiv';
 import { Input } from '../common/FormInput/Input';
+import { pricebtn } from '../StepperForm/StepperForm.module.css';
 
 const Marketplace = () => {
   const { register } = useFormContext();
@@ -43,7 +44,7 @@ const Marketplace = () => {
                   disabled
                 ></input>
                 <Button
-                  variant="primary"
+                  className={pricebtn}
                   size="sm"
                 >
                   Ändra pris
