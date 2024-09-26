@@ -1,67 +1,21 @@
 .formContainer {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 2rem;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-  }
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 8px;
+}
 
-  .formContainer label {
-    font-weight: 700;
-    text-shadow: -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px 0.5px 0 #fff, 0.5px 0.5px 0 #fff;
-  }
-  
-  .formTitle {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-  }
+.formContainer label {
+  font-weight: 700;
+  text-shadow: -0.5px -0.5px 0 #fff, 0.5px -0.5px 0 #fff, -0.5px 0.5px 0 #fff,
+    0.5px 0.5px 0 #fff;
+}
 
-<<<<<<< Updated upstream
-  .dateflex{
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .formSubtitle {
-    font-size: 0.9rem;
-    color: #6c757d;
-    margin-bottom: 1.5rem;
-  }
-  
-  .sectionTitle {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .sectionSubtitle {
-    font-size: 0.9rem;
-    color: #6c757d;
-    margin-bottom: 1rem;
-  }
-  
-  .buttonContainer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 2rem;
-  }
-  
-  .cancelButton {
-    margin-right: 1rem;
-  }
-  
-  .submitButton {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
-  
-  .submitButton:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
-  }
-=======
+.formTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
 .formTitle {
   font-size: 1.5rem;
   font-weight: bold;
@@ -111,4 +65,3 @@
   background-color: #195b97;
   border-color: #195b97;
 }
->>>>>>> Stashed changes
