@@ -5,6 +5,7 @@ import { useUser } from '../../contexts/UserContext';
 import StepperForm from '../StepperForm/StepperForm';
 import { set } from 'react-hook-form';
 import { Button } from 'react-bootstrap';
+import styles from './ProductContainer.module.css';
 
 const ProductContainer = () => {
   const { id } = useParams();
@@ -17,7 +18,12 @@ const ProductContainer = () => {
   return (
     <>
       {!showStepperForm && (
-        <Button onClick={handleButtonClick}>Lägg till produkt</Button>
+        <Button
+          className={styles.btn}
+          onClick={handleButtonClick}
+        >
+          Lägg till produkt
+        </Button>
       )}
       {showStepperForm && <StepperForm />}
       {/* {!showStepperForm && (

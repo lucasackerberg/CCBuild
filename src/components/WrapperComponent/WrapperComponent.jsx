@@ -1,6 +1,7 @@
 import ProjectComponent from '../ProjectComponent/ProjectComponent';
 import { useUser } from '../../contexts/UserContext';
 import { LogoutComponent } from '../LogoutComponent/LogoutComponent';
+import styles from './WrapperComponent.module.css';
 
 export default function WrapperComponent() {
   const { profile, loading } = useUser();
@@ -14,9 +15,9 @@ export default function WrapperComponent() {
   }
 
   return (
-    <>
+    <div>
       <ProjectComponent />
       <LogoutComponent></LogoutComponent>
-    </>
+    </div>
   );
 }

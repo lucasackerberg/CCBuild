@@ -2,6 +2,7 @@ import React from 'react';
 import supabase from '../../supabaseClient';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import styles from './LogoutComponent.module.css';
 
 export const LogoutComponent = () => {
   const navigate = useNavigate();
@@ -17,7 +18,12 @@ export const LogoutComponent = () => {
   }
   return (
     <div>
-      <Button onClick={handleLogout}>Logout</Button>
+      <Button
+        className={styles.btn}
+        onClick={handleLogout}
+      >
+        Logout
+      </Button>
     </div>
   );
 };

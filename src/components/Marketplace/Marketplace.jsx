@@ -44,7 +44,7 @@ const Marketplace = () => {
                   disabled
                 ></input>
                 <Button
-                  className={pricebtn}
+                  className={styles.pricebtn}
                   size="sm"
                 >
                   Ändra pris
