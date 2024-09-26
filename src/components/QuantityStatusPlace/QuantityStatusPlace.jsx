@@ -12,18 +12,19 @@ import {
   FaRegCalendarAlt,
 } from 'react-icons/fa';
 
-const QuantityStatusPlace = () => {
+const QuantityStatusPlace = ({ selectedProductTypeName }) => {
   const { register, watch, control } = useFormContext();
   const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
   const product = watch('product');
+  console.log(product);
 
   const CustomInput = React.forwardRef(({ value, onClick }, ref) => (
     <button
-      className="custom-date-input"
+      className={styles.customDateInput}
       onClick={onClick}
       ref={ref}
     >
-      {value || 'Datum'} <FaRegCalendarAlt />
+      {value || 'Date'} <FaRegCalendarAlt />
     </button>
   ));
 
@@ -37,25 +38,82 @@ const QuantityStatusPlace = () => {
       <p className={styles.formSubtitle}>
         Obligatoriska fält är markerade med stjärna (*)
       </p>
+      <div className={styles.formRow}>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="produkt"
+            className={styles.label}
+          >
+            Produkt:
+          </label>
+        </div>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="quantity"
+            className={styles.label}
+          >
+            Antal
+          </label>
+        </div>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="status"
+            className={styles.label}
+          >
+            Produktstatus
+          </label>
+        </div>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="marketplace"
+            className={styles.label}
+          >
+            Publiceringsstatus
+          </label>
+        </div>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="availability_date"
+            className={styles.label}
+          >
+            Datum:
+          </label>
+        </div>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="delete"
+            className={styles.label}
+          >
+            Radera
+          </label>
+        </div>
+        <div className={styles.formGroup}>
+          <label
+            htmlFor="showMore"
+            className={styles.label}
+          >
+            Visa mer
+          </label>
+        </div>
+      </div>
       <div className={styles.formContainerSub}>
         <div>
           <div
             className={styles.formRow}
             id={styles.mainRow}
           >
-            <div className={styles.formGroup}>
-              <label className={styles.label}>
-                Produkt: <p>{product}</p>
-              </label>
+            <div
+              className={styles.formGroup}
+              id={styles.iconCenter}
+            >
+              <span id="produkt">{selectedProductTypeName}</span>
             </div>
-            <div className={styles.formGroup}>
-              <label
-                htmlFor="quantity"
-                className={styles.label}
-              >
-                Antal
-              </label>
+            <div
+              className={styles.formGroup}
+              id={styles.iconCenter}
+            >
               <select
+                id="quantity"
                 {...register('quantity', { required: true })}
                 className={styles.formSelect}
               >
@@ -67,14 +125,12 @@ const QuantityStatusPlace = () => {
                 {/* Add project options */}
               </select>{' '}
             </div>
-            <div className={styles.formGroup}>
-              <label
-                htmlFor="status"
-                className={styles.label}
-              >
-                Produktstatus
-              </label>
+            <div
+              className={styles.formGroup}
+              id={styles.iconCenter}
+            >
               <select
+                id="status"
                 {...register('status', { required: true })}
                 className={styles.formSelect}
               >
@@ -101,14 +157,12 @@ const QuantityStatusPlace = () => {
                 {/* Add project options */}
               </select>{' '}
             </div>
-            <div className={styles.formGroup}>
-              <label
-                htmlFor="marketplace"
-                className={styles.label}
-              >
-                Publiceringsstatus
-              </label>
+            <div
+              className={styles.formGroup}
+              id={styles.iconCenter}
+            >
               <select
+                id="marketplace"
                 {...register('marketplace')}
                 className={styles.formSelect}
               >
@@ -122,18 +176,17 @@ const QuantityStatusPlace = () => {
                 <option value="four">Automatiskt avpublicerad</option>
               </select>
             </div>
-            <div className={styles.formGroup}>
-              <label
-                htmlFor="availability_date"
-                className={styles.label}
-              >
-                Datum:
-              </label>
+            <div
+              className={styles.formGroup}
+              id={styles.iconCenter}
+            >
               <Controller
+                id="availability_date"
                 name="availability_date"
                 control={control}
                 render={({ field: { onChange, value } }) => (
                   <DatePicker
+                    dateFormat="yyyy-MM-dd"
                     selected={value}
                     onChange={onChange}
                     customInput={<CustomInput />}
@@ -145,13 +198,8 @@ const QuantityStatusPlace = () => {
               className={styles.formGroup}
               id={styles.iconCenter}
             >
-              <label
-                htmlFor="delete"
-                className={styles.label}
-              >
-                Radera
-              </label>
               <Button
+                id="delete"
                 type="button"
                 variant="outline-secondary"
                 size="sm"
@@ -163,13 +211,8 @@ const QuantityStatusPlace = () => {
               className={styles.formGroup}
               id={styles.iconCenter}
             >
-              <label
-                htmlFor="showMore"
-                className={styles.label}
-              >
-                Visa mer
-              </label>
               <Button
+                id="showMore"
                 variant="outline-secondary"
                 type="button"
                 size="sm"

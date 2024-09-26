@@ -154,12 +154,16 @@ const StepperForm = () => {
     }
   };
 
+  const [selectedProductTypeName, setSelectedProductTypeName] = useState('');
+
   const renderStepContent = () => {
     switch (currentStep) {
       case 0:
         return (
           <div>
-            <GeneralData />
+            <GeneralData
+              setSelectedProductTypeName={setSelectedProductTypeName}
+            />
           </div>
         );
       case 1:
@@ -182,7 +186,9 @@ const StepperForm = () => {
       case 3:
         return (
           <div>
-            <QuantityStatusPlace />
+            <QuantityStatusPlace
+              selectedProductTypeName={selectedProductTypeName}
+            />
           </div>
         );
       case 4:
